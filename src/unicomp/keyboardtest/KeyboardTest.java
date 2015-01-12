@@ -378,7 +378,8 @@ public class KeyboardTest extends javax.swing.JFrame {
             jButton60.setBorder(null);
 
             jButton61.setText("SHIFT");
-            jButton61.setBorder(null);
+            jButton61.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+            jButton61.setContentAreaFilled(false);
 
             jButton62.setText(".");
             jButton62.setBorder(null);
@@ -711,7 +712,7 @@ public class KeyboardTest extends javax.swing.JFrame {
                                         .addComponent(jButton88, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(6, 6, 6)
                                     .addComponent(jButton91, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addContainerGap(27, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -820,7 +821,8 @@ public class KeyboardTest extends javax.swing.JFrame {
                         .addComponent(jButton89, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton90, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton88, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton91, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton91, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(89, Short.MAX_VALUE))
             );
 
             pack();
