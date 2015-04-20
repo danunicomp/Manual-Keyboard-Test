@@ -34,8 +34,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
 
-
-
   //  buttons.push_back(ui->pos122);
 
 
