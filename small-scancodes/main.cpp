@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include <cstdlib>
 
 #include "cls_UniCodes.h"
 
@@ -16,6 +16,7 @@ int main(int argc, char** argv) {
     cls_UniCodes Keyboard;
 
     do{    
+        system("stty -echo");
         buffer = Keyboard.GetUnicodeBuffer();
 
         cout << "Buffer: ";
@@ -23,8 +24,9 @@ int main(int argc, char** argv) {
         cout << buffer[x] << " " ;     
     }
     cout << endl;
+    system("stty echo");
     } while (buffer[1] !=45);
-    
+    system("stty echo");
     return 0;
 }
 

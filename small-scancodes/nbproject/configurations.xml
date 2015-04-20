@@ -58,7 +58,9 @@
         <ccTool>
           <developmentMode>5</developmentMode>
           <stripSymbols>true</stripSymbols>
+          <standard>4</standard>
           <commandlineTool>g++</commandlineTool>
+          <commandLine>-lusb</commandLine>
           <warningLevel>2</warningLevel>
         </ccTool>
         <fortranCompilerTool>
@@ -70,7 +72,7 @@
       </compileType>
       <item path="cls_UniCodes.cpp" ex="false" tool="1" flavor2="9">
         <ccTool>
-          <warningLevel>1</warningLevel>
+          <warningLevel>2</warningLevel>
         </ccTool>
       </item>
       <item path="cls_UniCodes.h" ex="false" tool="3" flavor2="0">

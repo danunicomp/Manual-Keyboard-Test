@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=small
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/small
+CND_ARTIFACT_NAME_Debug=small-scancodes
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/small-scancodes
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=small.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/small.tar
+CND_PACKAGE_NAME_Debug=small-scancodes.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/small-scancodes.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=small
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/small
+CND_ARTIFACT_NAME_Release=small-scancodes
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/small-scancodes
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=small.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/small.tar
+CND_PACKAGE_NAME_Release=small-scancodes.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/small-scancodes.tar
 #
 # include compiler specific variables
 #

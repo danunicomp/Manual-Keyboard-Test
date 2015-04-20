@@ -17,7 +17,7 @@
 #include <iostream>
 #include <signal.h>
 #include <unistd.h>
-#include <cstdio>
+#include <cstdlib>
 
 #include "cls_UniCodes.h"
 
@@ -41,17 +41,18 @@ using namespace std;
 
     int  buf[19];
     int scancodes;
- //   int *newbuf = malloc(sizeof(int) * 19); 
-    //int newbuf[19];
-   // *newbuf = malloc(sizeof(int) * 19); 
     std::vector<int> newbuf;
     int i, n;
 
     fd = cls_UniCodes::getfd(NULL);
+    if (fd == -1) {
+    //  perror("No in sudo??");
+      std::exit(1);
+    }
     /* the program terminates when there is no input for 10 secs */
    // signal(SIGALRM, watch_dog(fd));
 
-    cls_UniCodes::get_mode(fd);
+  //  cls_UniCodes::get_mode(fd);
     
   
     // THIS IS THE HOOK
@@ -161,7 +162,8 @@ void cls_UniCodes::clean_up(int fd ) {
 }
 
 // ************ GET MODE ***********************
-
+// DOESN't DO ANYTHING???
+// ****************************
 void cls_UniCodes::get_mode(int fd) {
     string m;
 
@@ -183,6 +185,7 @@ void cls_UniCodes::get_mode(int fd) {
             m = "UNICODE"; break;
     }
 }
+// *********************************************************
 ////////////////////////////////////////////////////////
 
 // ***************** IS A CONSOLE *************************
@@ -234,7 +237,7 @@ int cls_UniCodes::getfd(const char *fnam) {
 			return fd;
                 }
 		fprintf(stderr,"Couldn't open %s\n", fnam);
-		exit(1);
+		return -1;
 	}
 
 	fd = cls_UniCodes::open_a_console("/proc/self/fd/0");
@@ -269,8 +272,8 @@ int cls_UniCodes::getfd(const char *fnam) {
 		if (is_a_console(fd))
 			return fd;
 
-	fprintf(stderr, "Couldn't get a file descriptor referring to the console\n");
-	exit(1);		/* total failure */
+	fprintf(stderr, "Couldn't get a file descriptor referring to the console\nAre you running as SUDO??\n");
+	return -1;		/* total failure */
 }
 
 
