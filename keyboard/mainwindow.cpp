@@ -8,6 +8,9 @@
 #include <string>
 #include <stdio.h>
 #include <unistd.h>
+#include <signal.h>
+#include <errno.h>
+
 
 #include <QVector>
 #include <QMainWindow>
@@ -23,6 +26,7 @@
 
 #include "cls_unicode.h"
 #include "newkeyboard.h"
+#include "signalHandler.h"
 
 
 using namespace std;
@@ -48,89 +52,99 @@ MainWindow::~MainWindow()
 ////////////////////////////////////////////////////////////////////
 
  void MainWindow::RealTest(void) {
-   int x =0;
-   bool status, resultkey=false;
-   std::vector<int> buffer;
-   cls_UniCode Keyboard;
+  int x =0;
+  bool resultkey=false;
+  std::vector<int> buffer;
+  cls_UniCode Keyboard;
+   std::ostringstream oss;
 
-   std::string ExpectedUni; std::string ReadUni;
+  SignalHandler signalHandler;
+  // Register signal handler to handle kill signal
+  signalHandler.setupSignalHandlers();
+
+  std::string ExpectedUni; std::string ReadUni;
   std::string MakeString, BreakString;
-   this->DeclareKeys();
+  this->DeclareKeys();
 
-   for (x=0; x<buttons.size(); ++x) {
-       buttons[x]->setPalette(QPalette(QColor(Qt::gray)));
-
-     }
+  for (x=0; x<buttons.size(); ++x) {    // make all keys gray
+     buttons[x]->setPalette(QPalette(QColor(Qt::darkGray)));
+   }
   QWidget::repaint();
 
     int currentkey = 0;
-  //  buttons[currentkey]->setPalette(QPalette(QColor(Qt::blue)));
- //  QWidget::repaint();
- //  QWidget::update();
-   for (x=0; x < this->ExpectedMakeUnicode.size()*2; ++ x) {
-      buttons[currentkey]->setPalette(QPalette(QColor(Qt::blue)));
-     buttons[currentkey]->repaint();
-      //
-     QWidget::repaint();
-   //  usleep(1000);
-       buffer = Keyboard.GetUnicodeBuffer();
-       if (buffer[0] == 1999) {
-          status = true;
-          //  cout << "NAKE ";
-          ReadUni = this->VectorToString(buffer);
-          MakeString = ReadUni;
-          //////
-     ;
 
+  try {
+       for (x=0; x < this->ExpectedMakeUnicode.size()*2; ++ x) {
+            buttons[currentkey]->setPalette(QPalette(QColor(Qt::blue)));
+            buttons[currentkey]->repaint();
 
-          if (ReadUni == ExpectedMakeUnicode[currentkey].c_str() )
-            {resultkey = true;} else {resultkey = false;}
-          if (resultkey) {
-              //cout << " GOOD  ";
-              buttons[currentkey]->setPalette(QPalette(QColor(Qt::green)));
-              buttons[currentkey]->repaint();
-          }
-          else {
-             // cout << "FAIL  ";
-          }
-       //   cout << "Read: " << ReadUni  << "   " << "Expeded: " << ExpectedMakeUnicode[currentkey].c_str() << endl;
+            QWidget::repaint();
 
-        }
+            buffer = Keyboard.GetUnicodeBuffer();
+            if (buffer[0] == 1999) {
 
+            //  cout << "NAKE ";
+            ReadUni = this->VectorToString(buffer);
+            MakeString = ReadUni;
 
-       if (buffer[0] == 1000)  {
-           status = false;
-           //cout << "BREAK ";
-           ReadUni = this->VectorToString(buffer);
-           BreakString = ReadUni;
-           if (ReadUni == ExpectedBreakUnicode[currentkey].c_str() ) {resultkey = true;} else {resultkey = false;}
-           if (resultkey)
-            {
-               //cout << " GOOD  ";
-               buttons[currentkey]->setPalette(QPalette(QColor(Qt::green)));
-               buttons[currentkey]->repaint();
+            if (ReadUni == ExpectedMakeUnicode[currentkey].c_str() )
+              {resultkey = true;} else {resultkey = false;}
+            if (resultkey) {
+                //cout << " GOOD  ";
+                buttons[currentkey]->setPalette(QPalette(QColor(Qt::green)));
+                buttons[currentkey]->repaint();
+            }
+            else {
+             // break;
+            }
+            //   cout << "Read: " << ReadUni  << "   " << "Expeded: " << ExpectedMakeUnicode[currentkey].c_str() << endl;
 
-             }
-           else {
-               //cout << "FAIL  ";
-               buttons[currentkey]->setPalette(QPalette(QColor(Qt::red)));
-               buttons[currentkey]->repaint();
-             }
+            }
+
+            if (buffer[0] == 1000)  {
+
+         //cout << "BREAK ";
+         ReadUni = this->VectorToString(buffer);
+         BreakString = ReadUni;
+         if (ReadUni == ExpectedBreakUnicode[currentkey].c_str() ) {resultkey = true;} else {resultkey = false;}
+         if (resultkey)
+          {
+             //cout << " GOOD  ";
+             buttons[currentkey]->setPalette(QPalette(QColor(Qt::green)));
+             buttons[currentkey]->repaint();
+
+           }
+         else {
+             //cout << "FAIL  ";
+             buttons[currentkey]->setPalette(QPalette(QColor(Qt::red)));
+             buttons[currentkey]->repaint();
+             oss << "Key Fail. Position: " << this->position[currentkey];
+             ui->textBrowser->append(oss.str().c_str());
+             ui->textBrowser->update();
+             QWidget::repaint();
+             break;
+           }
       //    cout <<  "Read: " << ReadUni  << "   " << "Expeded: " << ExpectedBreakUnicode[currentkey].c_str() << endl;
-  cout << "this->ExpectedMakeUnicode.push_back(\"" << MakeString << "\");this->ExpectedBreakUnicode.push_back(\"" << BreakString << "\");" << endl;
-            ++currentkey;
-         }
+      //  cout << "this->ExpectedMakeUnicode.push_back(\"" << MakeString << "\");this->ExpectedBreakUnicode.push_back(\"" << BreakString << "\");" << endl;
+          ++currentkey;
+       }
+
+         }  // end nmain loop
 
 
-
-     }
+     }// END TRY
+    catch (SignalException& e)
+    {
+      std::cerr << "SignalException: " << e.what() << std::endl;
+      cout << "exit" << endl;
+    }
  }
 
  //////////////////////////////////////////////////////////////////
  std::string MainWindow::VectorToString(std::vector<int> CurVector) {
    std::string ret;
    std::ostringstream oss;
-   for (int x=0; x < CurVector.size()-1; ++x) {
+   for (unsigned int x=0; x < CurVector.size()-1; ++x) {
        oss << CurVector[x] << " ";
      }
    oss << CurVector.back();

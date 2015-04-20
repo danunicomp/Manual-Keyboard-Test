@@ -12,6 +12,11 @@
 #include <cstdlib>
 
 #include "cls_unicode.h"
+#include <signal.h>
+#include <errno.h>
+
+#include "signalHandler.h"
+
 
 cls_UniCode::cls_UniCode(QObject *parent) :
     QObject(parent)
@@ -24,6 +29,7 @@ using namespace std;
  std::vector<int> cls_UniCode::GetUnicodeBuffer (void) {
          int show_keycodes = 1;
     int fd;
+    int iret;
 
 
     int  buf[19];
@@ -48,7 +54,11 @@ using namespace std;
     if (tcgetattr(fd, &newkb) == -1)
             perror("tcgetattr");
     ///////////////////////////
+    SignalHandler signalHandler;
+    // Register signal handler to handle kill signal
+    signalHandler.setupSignalHandlers();
 
+    try {
 
     newkb.c_lflag &= ~ (ICANON | ECHO | ISIG);
     newkb.c_iflag = 0;
@@ -122,7 +132,12 @@ using namespace std;
             clean_up(fd);
             close(fd);
             return newbuf;
-
+} // end try
+    catch (SignalException& e)
+    {
+      std::cerr << "SignalException: " << e.what() << std::endl;
+      iret = EXIT_FAILURE;
+    }
 
 }
 

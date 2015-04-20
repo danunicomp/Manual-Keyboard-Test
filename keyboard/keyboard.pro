@@ -6,7 +6,8 @@ SOURCES += main.cpp \
     cls_unicode.cpp \
     mainwindow.cpp \
     newkeyboard.cpp \
-    temp.cpp
+    temp.cpp \
+    signalHandler.cpp
 
 RESOURCES +=
 
@@ -19,7 +20,8 @@ include(deployment.pri)
 HEADERS += \
     cls_unicode.h \
     mainwindow.h \
-    newkeyboard.h
+    newkeyboard.h \
+    signalHandler.h
 
 FORMS += \
     mainwindow.ui
