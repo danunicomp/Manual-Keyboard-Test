@@ -31,6 +31,9 @@ private:
     struct termios newkb;
     struct termios old;
 
+signals:
+  void QuitScan();
+
 };
 
 #endif // CLS_UNICODE_H

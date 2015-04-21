@@ -15,9 +15,9 @@ int main(int argc, char *argv[])
 
 //QApplication::instance()->setSetuidAllowed(true);
 
-    std::vector<int> buffer;
+    //std::vector<int> buffer;
 
-    cls_UniCode Keyboard;
+  //  cls_UniCode Keyboard;
 
     QApplication app(argc, argv);
 

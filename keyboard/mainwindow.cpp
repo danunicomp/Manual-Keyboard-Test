@@ -28,6 +28,8 @@
 #include "newkeyboard.h"
 #include "signalHandler.h"
 
+#define _MAKE 1000;
+#define _BREAK 1999;
 
 using namespace std;
 
@@ -55,7 +57,9 @@ MainWindow::~MainWindow()
   int x =0;
   bool resultkey=false;
   std::vector<int> buffer;
+
   cls_UniCode Keyboard;
+
    std::ostringstream oss;
 
   SignalHandler signalHandler;
@@ -94,14 +98,15 @@ MainWindow::~MainWindow()
                 buttons[currentkey]->setPalette(QPalette(QColor(Qt::green)));
                 buttons[currentkey]->repaint();
             }
-            else {
-             // break;
+            else {    // MAKE FAIL
+                 ShowFailure(currentkey, ReadUni, 1999);
+             break;
             }
             //   cout << "Read: " << ReadUni  << "   " << "Expeded: " << ExpectedMakeUnicode[currentkey].c_str() << endl;
 
             }
 
-            if (buffer[0] == 1000)  {
+         if (buffer[0] == 1000)  {
 
          //cout << "BREAK ";
          ReadUni = this->VectorToString(buffer);
@@ -116,12 +121,8 @@ MainWindow::~MainWindow()
            }
          else {
              //cout << "FAIL  ";
-             buttons[currentkey]->setPalette(QPalette(QColor(Qt::red)));
-             buttons[currentkey]->repaint();
-             oss << "Key Fail. Position: " << this->position[currentkey];
-             ui->textBrowser->append(oss.str().c_str());
-             ui->textBrowser->update();
-             QWidget::repaint();
+             ShowFailure(currentkey, ReadUni, 1000);
+
              break;
            }
       //    cout <<  "Read: " << ReadUni  << "   " << "Expeded: " << ExpectedBreakUnicode[currentkey].c_str() << endl;
@@ -139,6 +140,33 @@ MainWindow::~MainWindow()
       cout << "exit" << endl;
     }
  }
+
+ //////////////////////////////////////////////////////////////////
+
+ void MainWindow::ShowFailure(int CurrentPosition, string ReceivedUnicode, int MakeOrBreak) {
+   std::ostringstream oss;
+  ui->textBrowser->clear();
+   buttons[CurrentPosition]->setPalette(QPalette(QColor(Qt::red)));
+   buttons[CurrentPosition]->repaint();
+   oss << "Key Fail. Position: " << this->position[CurrentPosition] ;
+   ui->textBrowser->append(oss.str().c_str());
+   oss.str("");
+   oss << "Read: " << ReceivedUnicode;
+   ui->textBrowser->append(oss.str().c_str());
+   oss.str("");
+     oss << "Expected: " ;
+   if (MakeOrBreak == 1999) {
+       oss << this->ExpectedMakeUnicode[CurrentPosition];
+   }
+   if (MakeOrBreak == 1000) {
+       oss << this->ExpectedBreakUnicode[CurrentPosition];
+     }
+
+   ui->textBrowser->append(oss.str().c_str());
+   ui->textBrowser->update();
+   QWidget::repaint();
+ }
+
 
  //////////////////////////////////////////////////////////////////
  std::string MainWindow::VectorToString(std::vector<int> CurVector) {
@@ -181,16 +209,13 @@ void MainWindow::DoTest(void) {
   }
 }
 
-
-
-
-
+/////////////////////////////////////////////////////////
 
 void MainWindow::on_btnCycle_clicked()
 {
 
       test = 1;
-
+this->stopcycle = false;
 
  // buttons.push_back(ui->pos122);
 
@@ -225,7 +250,7 @@ this->DeclareKeys();
             QApplication::processEvents();
 
             //MainWindow::CheckForBreak(button[x-1]);
-
+            if (this->stopcycle) break;
 
         }
     }
@@ -241,7 +266,7 @@ void MainWindow::on_btnStop_clicked()
   //connect( ui->pushButton_3, SIGNAL( clicked() ), this, SLOT( MainWindow::CheckForBreak(1) ) );
  // button[x-1]->setPalette(QPalette(QColor(Qt::red)));
 //  QWidget::repaint();
-
+this->stopcycle = true;
 }
 
 

@@ -18,6 +18,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+  bool stopcycle;
 
 
 private slots:
@@ -42,6 +43,7 @@ private:
       QVector<std::string> ExpectedBreakUnicode;
 
  std::string VectorToString(std::vector<int> CurVector);
+ void ShowFailure(int, std::string, int);
 
 };
 

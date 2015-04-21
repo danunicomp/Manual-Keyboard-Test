@@ -29,8 +29,9 @@ using namespace std;
  std::vector<int> cls_UniCode::GetUnicodeBuffer (void) {
          int show_keycodes = 1;
     int fd;
-    int iret;
+  //  int iret;
 
+  //  cout << cls_UniCode::QObject.objectName();
 
     int  buf[19];
     int scancodes;
@@ -136,9 +137,10 @@ using namespace std;
     catch (SignalException& e)
     {
       std::cerr << "SignalException: " << e.what() << std::endl;
-      iret = EXIT_FAILURE;
+     // iret = EXIT_FAILURE;
     }
 
+return newbuf;
 }
 
 
