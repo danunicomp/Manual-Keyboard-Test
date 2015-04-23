@@ -5,6 +5,9 @@
 #include <vector>
 #include <cstdlib>
 
+#include <qtimer.h>
+
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -25,6 +28,7 @@ int main(int argc, char *argv[])
    // engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     MainWindow *kt = new MainWindow;
+
     kt->show();
 
     return app.exec();

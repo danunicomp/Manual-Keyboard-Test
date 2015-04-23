@@ -11,13 +11,15 @@
 class cls_UniCode : public QObject
 {
     Q_OBJECT
+
 public:
     explicit cls_UniCode(QObject *parent = 0);
        std::vector<int> GetUnicodeBuffer (void);
-
+       long long int GetUnicodeInt(void);
 signals:
 
 public slots:
+
 
 private:
      void clean_up(int) ;
@@ -27,7 +29,7 @@ private:
      int getfd(const char *);
 
      int oldkbmode;
-
+     void quit(int);
     struct termios newkb;
     struct termios old;
 

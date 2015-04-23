@@ -28,6 +28,10 @@ private slots:
     void on_GetUnicodes_clicked();
     void on_btnCycle_clicked();
 
+    void on_btn_Simulate_clicked();
+
+    void on_btnThreadTest_clicked();
+
 private:
     Ui::MainWindow *ui;
 

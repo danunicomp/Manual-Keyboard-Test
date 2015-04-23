@@ -19,6 +19,7 @@
 #include <QObject>
 #include <QWidget>
 
+#include <QThread>
 
 #include <algorithm>
 #include <sstream>
@@ -27,6 +28,8 @@
 #include "cls_unicode.h"
 #include "newkeyboard.h"
 #include "signalHandler.h"
+
+#include "startkeypressthread.h"
 
 #define _MAKE 1000;
 #define _BREAK 1999;
@@ -60,7 +63,7 @@ MainWindow::~MainWindow()
 
   cls_UniCode Keyboard;
 
-   std::ostringstream oss;
+  std::ostringstream oss;
 
   SignalHandler signalHandler;
   // Register signal handler to handle kill signal
@@ -75,7 +78,7 @@ MainWindow::~MainWindow()
    }
   QWidget::repaint();
 
-    int currentkey = 0;
+  int currentkey = 0;
 
   try {
        for (x=0; x < this->ExpectedMakeUnicode.size()*2; ++ x) {
@@ -214,20 +217,18 @@ void MainWindow::DoTest(void) {
 void MainWindow::on_btnCycle_clicked()
 {
 
-      test = 1;
-this->stopcycle = false;
+  test = 1;
+  this->stopcycle = false;
 
  // buttons.push_back(ui->pos122);
 
-
-
-this->DeclareKeys();
+  this->DeclareKeys();
 
   int x =0;
 
   //button = CurrentKeyboard.button;
-  ui->textBrowser->append("HellO");
-    ui->textBrowser->update();
+ // ui->textBrowser->append("HellO");
+  ui->textBrowser->update();
 
 
 
@@ -235,10 +236,10 @@ this->DeclareKeys();
           buttons[x]->setPalette(QPalette(QColor(Qt::gray)));
         }
 
-        // button[0]->setPalette(QPalette(QColor(Qt::green)));
+
+      // button[0]->setPalette(QPalette(QColor(Qt::green)));
        for (x =0; x<buttons.size(); ++x) {
             buttons[x]->setPalette(QPalette(QColor(Qt::blue)));
-
             QWidget::repaint();
       //    QObject().thread()->usleep(1000);
             usleep(100000);
@@ -658,3 +659,18 @@ void MainWindow::DeclareKeys (void) {
 
 
    }
+
+void MainWindow::on_btn_Simulate_clicked()
+{
+  cls_UniCode Keyboard;
+  cout << Keyboard.GetUnicodeInt() << endl;
+
+}
+
+void MainWindow::on_btnThreadTest_clicked()
+{
+    StartKeypressThread KeypressTest;
+    KeypressTest.start();
+    KeypressTest.run();
+
+}
