@@ -32,6 +32,8 @@ private slots:
 
     void on_btnThreadTest_clicked();
 
+    void on_btnTestLoadedWSE_clicked();
+
 private:
     Ui::MainWindow *ui;
 

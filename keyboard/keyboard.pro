@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     temp.cpp \
     signalHandler.cpp \
     cls_unicompcode.cpp \
-    startkeypressthread.cpp
+    startkeypressthread.cpp \
+    clsreadwsefile.cpp
 
 RESOURCES +=
 
@@ -25,10 +26,12 @@ HEADERS += \
     newkeyboard.h \
     signalHandler.h \
     cls_unicompcode.h \
-    startkeypressthread.h
+    startkeypressthread.h \
+    clsreadwsefile.h
 
 FORMS += \
     mainwindow.ui
 
 OTHER_FILES += \
-    test.wse
+    test.wse \
+    functionkeys.wse

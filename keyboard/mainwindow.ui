@@ -29,24 +29,11 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="GetUnicodes">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>330</y>
-      <width>151</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Get UniCodes must run as sudo</string>
-    </property>
-   </widget>
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>240</y>
+      <y>220</y>
       <width>381</width>
       <height>81</height>
      </rect>
@@ -1720,7 +1707,7 @@
    <widget class="QPushButton" name="btn_Simulate">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>410</x>
       <y>330</y>
       <width>83</width>
       <height>25</height>
@@ -1747,7 +1734,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>280</y>
+      <y>270</y>
       <width>83</width>
       <height>25</height>
      </rect>
@@ -1755,6 +1742,64 @@
     <property name="text">
      <string>Stop Thread</string>
     </property>
+   </widget>
+   <widget class="QLabel" name="lblCurrentFirmware">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>350</y>
+      <width>209</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Current Firmware:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnTestLoadedWSE">
+    <property name="geometry">
+     <rect>
+      <x>532</x>
+      <y>320</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load WSE File</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>310</y>
+      <width>211</width>
+      <height>67</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="GetUnicodes">
+       <property name="text">
+        <string>START TEST</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblFirmwareDisplay">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
