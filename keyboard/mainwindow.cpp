@@ -678,17 +678,7 @@ void MainWindow::on_btnThreadTest_clicked()
 
 void MainWindow::on_btnTestLoadedWSE_clicked()
 {
-qDebug() << "Reading File";
-  QFile file("/home/pi/unicomp/keyboard/functionkeys.wse");
-  if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    qDebug() << "Error opening";
-    return;
-    }
-  QTextStream in(&file);
-  while (!in.atEnd()) {
-      QString line = in.readLine();
-      qDebug() << line;
-  }
+
 
 
 }
