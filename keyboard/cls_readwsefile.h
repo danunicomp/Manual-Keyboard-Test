@@ -11,14 +11,19 @@ public:
   explicit clsReadWSEFile(QObject *parent = 0);
   int ReadWSEFile (QString FileName);
   std::vector<int> kbPositions;
-  std::vector<std::string> kbMakes;
-  std::vector<std::string> kbBreaks;
+  std::vector<QString> kbMakes;
+  std::vector<QString> kbBreaks;
+  std::vector<QString> kbDescription;
 
 
 private:
   int ReadFile(QString);
   std::vector<QString> lines;
   int ParseWSELine(void);
+  int ParsePosition(QString);
+  int ParseMakes(QString);
+  int ParseBreaks(QString);
+  int ParseDescription(QString);
 
 signals:
   

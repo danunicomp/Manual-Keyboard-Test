@@ -22,9 +22,8 @@
 #include <QThread>
 #include <QFile>
 
-#include <algorithm>
+
 #include <sstream>
-#include <iterator>
 
 #include "cls_unicode.h"
 #include "newkeyboard.h"
@@ -57,6 +56,26 @@ MainWindow::~MainWindow()
 
 }
 
+void MainWindow::on_GetUnicodes_clicked()
+{
+       MainWindow::RealTest();
+}
+
+////////////////////////////////////////////////////////////////////
+ void MainWindow::DoTest2015 (void) {
+     bool resultkey=false;
+     QVector<int> buffer;
+
+     std::string ExpectedUni; std::string ReadUni;
+     std::string MakeString, BreakString;
+
+     clsReadWSEFile KeyScanCodes;
+     KeyScanCodes.ReadWSEFile("/home/pi/unicomp/keyboard/functionkeys.wse");
+
+     KeyScanCodes.kbPositions;
+
+ }
+
 ////////////////////////////////////////////////////////////////////
 
  void MainWindow::RealTest(void) {
@@ -74,7 +93,14 @@ MainWindow::~MainWindow()
 
   std::string ExpectedUni; std::string ReadUni;
   std::string MakeString, BreakString;
+
+
+
   this->DeclareKeys();
+//////////////////////////////
+
+
+
 
   for (x=0; x<buttons.size(); ++x) {    // make all keys gray
      buttons[x]->setPalette(QPalette(QColor(Qt::darkGray)));
@@ -223,37 +249,29 @@ void MainWindow::on_btnCycle_clicked()
   test = 1;
   this->stopcycle = false;
 
- // buttons.push_back(ui->pos122);
-
   this->DeclareKeys();
+
+
+
 
   int x =0;
 
-  //button = CurrentKeyboard.button;
- // ui->textBrowser->append("HellO");
   ui->textBrowser->update();
-
-
 
       for (x=0; x<buttons.size(); ++x) {
           buttons[x]->setPalette(QPalette(QColor(Qt::gray)));
         }
 
-
-      // button[0]->setPalette(QPalette(QColor(Qt::green)));
        for (x =0; x<buttons.size(); ++x) {
             buttons[x]->setPalette(QPalette(QColor(Qt::blue)));
             QWidget::repaint();
-      //    QObject().thread()->usleep(1000);
             usleep(100000);
             buttons[x]->setPalette(QPalette(QColor(Qt::green)));
-
 
             QWidget::repaint();
 
             QApplication::processEvents();
 
-            //MainWindow::CheckForBreak(button[x-1]);
             if (this->stopcycle) break;
 
         }
@@ -274,16 +292,7 @@ this->stopcycle = true;
 }
 
 
-void MainWindow::on_GetUnicodes_clicked()
-{
-  using namespace std;
 
-//   ui->textBrowser->setText("Hello");
-//  ui->textBrowser->clear();
-//   ui->textEdit->setText("Hello Woeld");
-
-       MainWindow::RealTest();
-}
 
 // *************************************************************************************
 void MainWindow::DeclareKeys (void) {
@@ -447,6 +456,7 @@ void MainWindow::DeclareKeys (void) {
   this->ExpectedMakeUnicode.push_back("1999 1");this->ExpectedBreakUnicode.push_back("1000 129");
   this->ExpectedMakeUnicode.push_back("1999 69");this->ExpectedBreakUnicode.push_back("1000 197");
   this->ExpectedMakeUnicode.push_back("1999 55");this->ExpectedBreakUnicode.push_back("1000 183");
+
   this->ExpectedMakeUnicode.push_back("1999 98");this->ExpectedBreakUnicode.push_back("1000 226");
   this->ExpectedMakeUnicode.push_back("1999 78");this->ExpectedBreakUnicode.push_back("1000 206");
   this->ExpectedMakeUnicode.push_back("1999 73");this->ExpectedBreakUnicode.push_back("1000 201");
@@ -454,6 +464,7 @@ void MainWindow::DeclareKeys (void) {
   this->ExpectedMakeUnicode.push_back("1999 71");this->ExpectedBreakUnicode.push_back("1000 199");
   this->ExpectedMakeUnicode.push_back("1999 111");this->ExpectedBreakUnicode.push_back("1000 239");
   this->ExpectedMakeUnicode.push_back("1999 110");this->ExpectedBreakUnicode.push_back("1000 238");
+
   this->ExpectedMakeUnicode.push_back("1999 107");this->ExpectedBreakUnicode.push_back("1000 235");
   this->ExpectedMakeUnicode.push_back("1999 27");this->ExpectedBreakUnicode.push_back("1000 155");
   this->ExpectedMakeUnicode.push_back("1999 26");this->ExpectedBreakUnicode.push_back("1000 154");

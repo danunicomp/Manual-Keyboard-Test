@@ -19,7 +19,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
   bool stopcycle;
-
+  void DoTest2015 (void);
 
 private slots:
     void DoTest(void);
@@ -29,9 +29,7 @@ private slots:
     void on_btnCycle_clicked();
 
     void on_btn_Simulate_clicked();
-
     void on_btnThreadTest_clicked();
-
     void on_btnTestLoadedWSE_clicked();
 
 private:
