@@ -31,6 +31,8 @@
 #include "signalHandler.h"
 
 #include "startkeypressthread.h"
+#include "clsreadwsefile.h"
+
 
 #define _MAKE 1000;
 #define _BREAK 1999;
@@ -678,6 +680,8 @@ void MainWindow::on_btnThreadTest_clicked()
 
 void MainWindow::on_btnTestLoadedWSE_clicked()
 {
+  clsReadWSEFile WSEFile;
+  WSEFile.ReadWSEFile("/home/pi/unicomp/keyboard/functionkeys.wse");
 
 
 

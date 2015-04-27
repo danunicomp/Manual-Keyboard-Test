@@ -6,10 +6,10 @@ clsReadWSEFile::clsReadWSEFile(QObject *parent) :
 {
 }
 
-int ReadWSEFile (QString FileName)
+int clsReadWSEFile::ReadWSEFile (QString FileName)
 {
   qDebug() << "Reading File";
-  QFile file("/home/pi/unicomp/keyboard/functionkeys.wse");
+  QFile file(FileName);
   if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     qDebug() << "Error opening";
     return;

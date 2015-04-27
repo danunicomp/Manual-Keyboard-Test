@@ -2,6 +2,7 @@
 #define CLSREADWSEFILE_H
 
 #include <QObject>
+#include <vector>
 
 class clsReadWSEFile : public QObject
 {
@@ -9,9 +10,9 @@ class clsReadWSEFile : public QObject
 public:
   explicit clsReadWSEFile(QObject *parent = 0);
   int ReadWSEFile (QString FileName);
-  vector<int> kbPositions;
-  vector<std::string> kbMakes;
-  vector<std::string> kbBreaks;
+  std::vector<int> kbPositions;
+  std::vector<std::string> kbMakes;
+  std::vector<std::string> kbBreaks;
 
 private:
   int ReadFile(QString);
