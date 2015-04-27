@@ -31,7 +31,7 @@
 #include "signalHandler.h"
 
 #include "startkeypressthread.h"
-#include "clsreadwsefile.h"
+#include "cls_readwsefile.h"
 
 
 #define _MAKE 1000;
