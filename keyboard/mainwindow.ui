@@ -34,7 +34,7 @@
      <rect>
       <x>140</x>
       <y>220</y>
-      <width>381</width>
+      <width>341</width>
       <height>81</height>
      </rect>
     </property>
@@ -1704,19 +1704,6 @@
      <string>Stop</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_Simulate">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>330</y>
-      <width>83</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Simulte</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnThreadTest">
     <property name="geometry">
      <rect>
@@ -1775,31 +1762,44 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QPushButton" name="GetUnicodes">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>310</y>
-      <width>211</width>
-      <height>67</height>
+      <x>200</x>
+      <y>300</y>
+      <width>209</width>
+      <height>31</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="GetUnicodes">
-       <property name="text">
-        <string>START TEST</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="lblFirmwareDisplay">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="text">
+     <string>START TEST</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>20</y>
+      <width>111</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnNewTest">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>310</y>
+      <width>83</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>NEW TEST</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

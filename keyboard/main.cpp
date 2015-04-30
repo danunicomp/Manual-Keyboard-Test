@@ -6,11 +6,12 @@
 #include <cstdlib>
 
 #include <qtimer.h>
-
+#include <unistd.h> // getuid
+#include <stdio.h> // printf
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "sudodialog.h"
 #include "cls_unicode.h"
 
 int main(int argc, char *argv[])
@@ -27,9 +28,13 @@ int main(int argc, char *argv[])
     //QQmlApplicationEngine engine;
    // engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    MainWindow *kt = new MainWindow;
+    if ( geteuid() ) {SudoDialog *sw = new SudoDialog; sw->show();}
+    else {MainWindow *kt = new MainWindow; kt->show(); }
 
-    kt->show();
+
+
+
+
 
 
     return app.exec();

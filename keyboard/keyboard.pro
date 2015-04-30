@@ -1,5 +1,5 @@
 TEMPLATE = app
-
+VERSION = 2.0.15.4.30
 QT += qml quick widgets
 
 SOURCES += main.cpp \
@@ -10,7 +10,8 @@ SOURCES += main.cpp \
     signalHandler.cpp \
     cls_unicompcode.cpp \
     startkeypressthread.cpp \
-    cls_readwsefile.cpp
+    cls_readwsefile.cpp \
+    sudodialog.cpp
 
 RESOURCES +=
 
@@ -27,11 +28,15 @@ HEADERS += \
     signalHandler.h \
     cls_unicompcode.h \
     startkeypressthread.h \
-    cls_readwsefile.h
+    cls_readwsefile.h \
+    sudodialog.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    sudodialog.ui \
+    GType.ui
 
 OTHER_FILES += \
     test.wse \
-    functionkeys.wse
+    functionkeys.wse \
+    _testkeyboard.wse

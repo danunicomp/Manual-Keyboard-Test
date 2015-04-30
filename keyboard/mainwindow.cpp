@@ -42,8 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
-    ui->setupUi(this);
+ui->setupUi(this);
 
   //  buttons.push_back(ui->pos122);
 
@@ -61,6 +60,12 @@ void MainWindow::on_GetUnicodes_clicked()
        MainWindow::RealTest();
 }
 
+//////////////////////////////////////////////////////////
+void MainWindow::on_btnNewTest_clicked()
+{
+   DoTest2015();
+}
+
 ////////////////////////////////////////////////////////////////////
  void MainWindow::DoTest2015 (void) {
      bool resultkey=false;
@@ -70,7 +75,7 @@ void MainWindow::on_GetUnicodes_clicked()
      std::string MakeString, BreakString;
 
      clsReadWSEFile KeyScanCodes;
-     KeyScanCodes.ReadWSEFile("/home/pi/unicomp/keyboard/functionkeys.wse");
+     KeyScanCodes.ReadWSEFile("/home/pi/unicomp/keyboard/_testkeyboard.wse");
 
      KeyScanCodes.kbPositions;
 
@@ -94,13 +99,8 @@ void MainWindow::on_GetUnicodes_clicked()
   std::string ExpectedUni; std::string ReadUni;
   std::string MakeString, BreakString;
 
-
-
   this->DeclareKeys();
 //////////////////////////////
-
-
-
 
   for (x=0; x<buttons.size(); ++x) {    // make all keys gray
      buttons[x]->setPalette(QPalette(QColor(Qt::darkGray)));
@@ -157,8 +157,7 @@ void MainWindow::on_GetUnicodes_clicked()
 
              break;
            }
-      //    cout <<  "Read: " << ReadUni  << "   " << "Expeded: " << ExpectedBreakUnicode[currentkey].c_str() << endl;
-      //  cout << "this->ExpectedMakeUnicode.push_back(\"" << MakeString << "\");this->ExpectedBreakUnicode.push_back(\"" << BreakString << "\");" << endl;
+
           ++currentkey;
        }
 
@@ -539,6 +538,26 @@ void MainWindow::DeclareKeys (void) {
 
 
 }
+
+
+
+
+void MainWindow::on_btnThreadTest_clicked()
+{
+    StartKeypressThread KeypressTest;
+    KeypressTest.start();
+    KeypressTest.run();
+}
+
+void MainWindow::on_btnTestLoadedWSE_clicked()
+{
+  clsReadWSEFile WSEFile;
+  WSEFile.ReadWSEFile("/home/pi/unicomp/keyboard/functionkeys.wse");
+}
+
+
+
+
 ///////////////////////////////////////////////////////////////////////
 
 
@@ -673,27 +692,3 @@ void MainWindow::DeclareKeys (void) {
 
 
    }
-
-void MainWindow::on_btn_Simulate_clicked()
-{
-  cls_UniCode Keyboard;
-  cout << Keyboard.GetUnicodeInt() << endl;
-
-}
-
-void MainWindow::on_btnThreadTest_clicked()
-{
-    StartKeypressThread KeypressTest;
-    KeypressTest.start();
-    KeypressTest.run();
-
-}
-
-void MainWindow::on_btnTestLoadedWSE_clicked()
-{
-  clsReadWSEFile WSEFile;
-  WSEFile.ReadWSEFile("/home/pi/unicomp/keyboard/functionkeys.wse");
-
-
-
-}
