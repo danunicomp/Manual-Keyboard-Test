@@ -20,10 +20,10 @@ int clsReadWSEFile::ReadWSEFile (QString FileName)
   //string buf = "";
 
 
-  qDebug() << "Reading File";
+  //qDebug() << "Reading File";
   QFile file(FileName);
   if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    qDebug() << "Error opening";
+  //  qDebug() << "Error opening";
     return -1;
     }
   QTextStream in(&file);
@@ -33,7 +33,7 @@ int clsReadWSEFile::ReadWSEFile (QString FileName)
 
       if (line[0] != '#' && line.size() != 0 ) {
           line = line.simplified(); // take out all tabs and extra spaces in line
-          qDebug() << "Line: " << line;
+       //   qDebug() << "Line: " << line;
           // BEGIN PARSING ELLIMATES
           ParsePosition(line);
           ParseMakes(line);
@@ -94,7 +94,7 @@ int clsReadWSEFile::ParseMakes(QString line) {
     make = make.simplified();
     kbMakes.push_back(make);
 
-    qDebug() << "Make: " << make;
+ //   qDebug() << "Make: " << make;
     return 1;
 }
 
@@ -118,7 +118,7 @@ int clsReadWSEFile::ParseBreaks(QString line) {
 
     }
     kbBreaks.push_back(breaks);
-    qDebug() << "Break: " << breaks;
+//    qDebug() << "Break: " << breaks;
     return 1;
 }
 
@@ -137,6 +137,6 @@ int clsReadWSEFile::ParseDescription(QString line) {
     }
     description = description.simplified();
     kbDescription.push_back(description);
-    qDebug() << "Description: " << description;
+//    qDebug() << "Description: " << description;
     return 1;
 }

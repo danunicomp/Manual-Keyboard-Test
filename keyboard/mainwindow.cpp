@@ -31,7 +31,8 @@
 
 #include "startkeypressthread.h"
 #include "cls_readwsefile.h"
-
+#include "dialogpass.h"
+#include "dialogfail.h"
 
 #define _MAKE 1000;
 #define _BREAK 1999;
@@ -77,7 +78,10 @@ void MainWindow::on_btnNewTest_clicked()
      clsReadWSEFile KeyScanCodes;
      KeyScanCodes.ReadWSEFile("/home/pi/unicomp/keyboard/_testkeyboard.wse");
 
-     KeyScanCodes.kbPositions;
+     for (int x=0; x< KeyScanCodes.kbPositions.size(); ++x) {
+         qDebug() << KeyScanCodes.kbPositions[x] << " Make: " << KeyScanCodes.kbMakes[x] << " Break: " << KeyScanCodes.kbBreaks[x];
+     }
+
 
  }
 
@@ -86,6 +90,7 @@ void MainWindow::on_btnNewTest_clicked()
  void MainWindow::RealTest(void) {
   int x =0;
   bool resultkey=false;
+  bool Status = false;
   std::vector<int> buffer;
 
   cls_UniCode Keyboard;
@@ -131,6 +136,7 @@ void MainWindow::on_btnNewTest_clicked()
                 buttons[currentkey]->repaint();
             }
             else {    // MAKE FAIL
+                Status = false;
                  ShowFailure(currentkey, ReadUni, 1999);
              break;
             }
@@ -149,20 +155,21 @@ void MainWindow::on_btnNewTest_clicked()
              //cout << " GOOD  ";
              buttons[currentkey]->setPalette(QPalette(QColor(Qt::green)));
              buttons[currentkey]->repaint();
+            Status = true;
 
            }
          else {
              //cout << "FAIL  ";
+             Status = false;
              ShowFailure(currentkey, ReadUni, 1000);
 
              break;
            }
-
           ++currentkey;
        }
 
          }  // end nmain loop
-
+        if (Status) { DialogPass *pd = new DialogPass; pd->show(); }
 
      }// END TRY
     catch (SignalException& e)
@@ -196,6 +203,10 @@ void MainWindow::on_btnNewTest_clicked()
    ui->textBrowser->append(oss.str().c_str());
    ui->textBrowser->update();
    QWidget::repaint();
+
+   DialogFail *pd = new DialogFail;
+   pd->show();
+
  }
 
 

@@ -11,7 +11,9 @@ SOURCES += main.cpp \
     cls_unicompcode.cpp \
     startkeypressthread.cpp \
     cls_readwsefile.cpp \
-    sudodialog.cpp
+    sudodialog.cpp \
+    dialogpass.cpp \
+    dialogfail.cpp
 
 RESOURCES +=
 
@@ -29,14 +31,19 @@ HEADERS += \
     cls_unicompcode.h \
     startkeypressthread.h \
     cls_readwsefile.h \
-    sudodialog.h
+    sudodialog.h \
+    dialogpass.h \
+    dialogfail.h
 
 FORMS += \
     mainwindow.ui \
     sudodialog.ui \
-    GType.ui
+    GType.ui \
+    dialogpass.ui \
+    dialogfail.ui
 
 OTHER_FILES += \
     test.wse \
     functionkeys.wse \
-    _testkeyboard.wse
+    _testkeyboard.wse \
+    scnacodes.xml
