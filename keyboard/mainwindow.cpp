@@ -46,7 +46,8 @@ MainWindow::MainWindow(QWidget *parent) :
 ui->setupUi(this);
 
   //  buttons.push_back(ui->pos122);
-
+// LOAD PART NUMBERS
+ui->comboBox->addItem("Test","1");
 
 }
 

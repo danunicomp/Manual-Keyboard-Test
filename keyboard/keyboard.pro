@@ -6,7 +6,6 @@ SOURCES += main.cpp \
     cls_unicode.cpp \
     mainwindow.cpp \
     newkeyboard.cpp \
-    temp.cpp \
     signalHandler.cpp \
     cls_unicompcode.cpp \
     startkeypressthread.cpp \

@@ -18,8 +18,6 @@ int clsReadWSEFile::ReadWSEFile (QString FileName)
 {
   //unsigned int x = 0;
   //string buf = "";
-
-
   //qDebug() << "Reading File";
   QFile file(FileName);
   if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
