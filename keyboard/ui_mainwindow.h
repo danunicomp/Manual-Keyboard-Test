@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed Apr 29 10:58:24 2015
+** Created: Tue May 5 08:59:19 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -19,7 +19,6 @@
 #include <QtGui/QLabel>
 #include <QtGui/QMainWindow>
 #include <QtGui/QPushButton>
-#include <QtGui/QStatusBar>
 #include <QtGui/QTextBrowser>
 #include <QtGui/QWidget>
 
@@ -159,9 +158,9 @@ public:
     QLabel *lblCurrentFirmware;
     QPushButton *btnTestLoadedWSE;
     QPushButton *GetUnicodes;
-    QComboBox *comboBox;
+    QComboBox *cmbPartNumber;
     QPushButton *btnNewTest;
-    QStatusBar *statusbar;
+    QPushButton *btnDebug;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -570,7 +569,7 @@ public:
         btnStopThreadTest->setGeometry(QRect(560, 270, 83, 25));
         lblCurrentFirmware = new QLabel(centralwidget);
         lblCurrentFirmware->setObjectName(QString::fromUtf8("lblCurrentFirmware"));
-        lblCurrentFirmware->setGeometry(QRect(50, 350, 209, 14));
+        lblCurrentFirmware->setGeometry(QRect(10, 340, 209, 14));
         btnTestLoadedWSE = new QPushButton(centralwidget);
         btnTestLoadedWSE->setObjectName(QString::fromUtf8("btnTestLoadedWSE"));
         btnTestLoadedWSE->setGeometry(QRect(532, 320, 111, 41));
@@ -578,18 +577,18 @@ public:
         btnTestLoadedWSE->setFlat(false);
         GetUnicodes = new QPushButton(centralwidget);
         GetUnicodes->setObjectName(QString::fromUtf8("GetUnicodes"));
-        GetUnicodes->setGeometry(QRect(200, 300, 209, 31));
-        comboBox = new QComboBox(centralwidget);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        comboBox->setGeometry(QRect(530, 20, 111, 24));
-        comboBox->setEditable(true);
+        GetUnicodes->setGeometry(QRect(200, 310, 209, 31));
+        cmbPartNumber = new QComboBox(centralwidget);
+        cmbPartNumber->setObjectName(QString::fromUtf8("cmbPartNumber"));
+        cmbPartNumber->setGeometry(QRect(530, 20, 111, 24));
+        cmbPartNumber->setEditable(false);
         btnNewTest = new QPushButton(centralwidget);
         btnNewTest->setObjectName(QString::fromUtf8("btnNewTest"));
         btnNewTest->setGeometry(QRect(420, 310, 83, 25));
+        btnDebug = new QPushButton(centralwidget);
+        btnDebug->setObjectName(QString::fromUtf8("btnDebug"));
+        btnDebug->setGeometry(QRect(420, 20, 83, 25));
         MainWindow->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -744,6 +743,7 @@ public:
         btnTestLoadedWSE->setText(QApplication::translate("MainWindow", "Load WSE File", 0, QApplication::UnicodeUTF8));
         GetUnicodes->setText(QApplication::translate("MainWindow", "START TEST", 0, QApplication::UnicodeUTF8));
         btnNewTest->setText(QApplication::translate("MainWindow", "NEW TEST", 0, QApplication::UnicodeUTF8));
+        btnDebug->setText(QApplication::translate("MainWindow", "DEBUG", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

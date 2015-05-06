@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Wed Apr 29 10:59:22 2015
+** Created: Tue May 5 09:00:20 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -39,6 +39,7 @@ static const uint qt_meta_data_MainWindow[] = {
      100,   20,   20,   20, 0x08,
      127,   20,   20,   20, 0x08,
      157,   20,   20,   20, 0x08,
+     181,   20,   20,   20, 0x08,
 
        0        // eod
 };
@@ -48,7 +49,7 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_btnStop_clicked()\0on_GetUnicodes_clicked()\0"
     "on_btnCycle_clicked()\0on_btnThreadTest_clicked()\0"
     "on_btnTestLoadedWSE_clicked()\0"
-    "on_btnNewTest_clicked()\0"
+    "on_btnNewTest_clicked()\0on_btnDebug_clicked()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -65,6 +66,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->on_btnThreadTest_clicked(); break;
         case 6: _t->on_btnTestLoadedWSE_clicked(); break;
         case 7: _t->on_btnNewTest_clicked(); break;
+        case 8: _t->on_btnDebug_clicked(); break;
         default: ;
         }
     }
@@ -103,9 +105,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

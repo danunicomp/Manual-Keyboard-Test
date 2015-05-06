@@ -33,6 +33,8 @@ private slots:
 
     void on_btnNewTest_clicked();
 
+    void on_btnDebug_clicked();
+
 private:
     Ui::MainWindow *ui;
 

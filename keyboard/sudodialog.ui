@@ -26,7 +26,7 @@
         </font>
        </property>
        <property name="text">
-        <string>THIS MUST BE RAN AS SUDO</string>
+        <string>THIS MUST RUN AS SUDO</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

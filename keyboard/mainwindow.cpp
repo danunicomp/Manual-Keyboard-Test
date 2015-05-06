@@ -33,6 +33,7 @@
 #include "cls_readwsefile.h"
 #include "dialogpass.h"
 #include "dialogfail.h"
+#include "debugwindow.h"
 
 #define _MAKE 1000;
 #define _BREAK 1999;
@@ -47,7 +48,7 @@ ui->setupUi(this);
 
   //  buttons.push_back(ui->pos122);
 // LOAD PART NUMBERS
-ui->comboBox->addItem("Test","1");
+
 
 }
 
@@ -703,4 +704,11 @@ void MainWindow::on_btnTestLoadedWSE_clicked()
   */
 
 
-   }
+}
+
+void MainWindow::on_btnDebug_clicked()
+{
+    DebugWindow dw;
+    dw.show();
+    dw.exec();
+}

@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     cls_readwsefile.cpp \
     sudodialog.cpp \
     dialogpass.cpp \
-    dialogfail.cpp
+    dialogfail.cpp \
+    debugwindow.cpp
 
 RESOURCES +=
 
@@ -32,14 +33,16 @@ HEADERS += \
     cls_readwsefile.h \
     sudodialog.h \
     dialogpass.h \
-    dialogfail.h
+    dialogfail.h \
+    debugwindow.h
 
 FORMS += \
     mainwindow.ui \
     sudodialog.ui \
     GType.ui \
     dialogpass.ui \
-    dialogfail.ui
+    dialogfail.ui \
+    debugwindow.ui
 
 OTHER_FILES += \
     test.wse \
