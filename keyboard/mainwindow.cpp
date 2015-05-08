@@ -29,14 +29,16 @@
 #include "newkeyboard.h"
 #include "signalHandler.h"
 
+#include "realmainwindow.h"
+#include "ui_realmainwindow.h"
+
 #include "startkeypressthread.h"
 #include "cls_readwsefile.h"
 #include "dialogpass.h"
 #include "dialogfail.h"
 #include "debugwindow.h"
 
-#define _MAKE 1000;
-#define _BREAK 1999;
+#include <QDesktopWidget>
 
 using namespace std;
 
@@ -45,6 +47,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
 ui->setupUi(this);
+  this->setGeometry(0,0,this->width(),this->height());
+//Put the dialog in the screen center
+ const QRect screen = QApplication::desktop()->screenGeometry();
+ this->move( screen.center() - this->rect().center() );
 
   //  buttons.push_back(ui->pos122);
 // LOAD PART NUMBERS
@@ -55,7 +61,7 @@ ui->setupUi(this);
 MainWindow::~MainWindow()
 {
     delete ui;
-
+      RealMainWindow *rm = new RealMainWindow; rm->show();
 }
 
 void MainWindow::on_GetUnicodes_clicked()
@@ -80,9 +86,17 @@ void MainWindow::on_btnNewTest_clicked()
      clsReadWSEFile KeyScanCodes;
      KeyScanCodes.ReadWSEFile("/home/pi/unicomp/keyboard/_testkeyboard.wse");
 
-     for (int x=0; x< KeyScanCodes.kbPositions.size(); ++x) {
+     int x;
+     // READ WSE FILE
+     for (x=0; x< KeyScanCodes.kbPositions.size(); ++x) {
          qDebug() << KeyScanCodes.kbPositions[x] << " Make: " << KeyScanCodes.kbMakes[x] << " Break: " << KeyScanCodes.kbBreaks[x];
      }
+
+     // MAKE ALL BUTTONS ON UI GRAY
+     for (x=0; x<buttons.size(); ++x) {    // make all keys gray
+        buttons[x]->setPalette(QPalette(QColor(Qt::darkGray)));
+      }
+     QWidget::repaint();
 
 
  }
@@ -185,7 +199,7 @@ void MainWindow::on_btnNewTest_clicked()
 
  void MainWindow::ShowFailure(int CurrentPosition, string ReceivedUnicode, int MakeOrBreak) {
    std::ostringstream oss;
-  ui->textBrowser->clear();
+   ui->textBrowser->clear();
    buttons[CurrentPosition]->setPalette(QPalette(QColor(Qt::red)));
    buttons[CurrentPosition]->repaint();
    oss << "Key Fail. Position: " << this->position[CurrentPosition] ;
@@ -263,9 +277,6 @@ void MainWindow::on_btnCycle_clicked()
 
   this->DeclareKeys();
 
-
-
-
   int x =0;
 
   ui->textBrowser->update();
@@ -304,8 +315,6 @@ this->stopcycle = true;
 }
 
 
-
-
 // *************************************************************************************
 void MainWindow::DeclareKeys (void) {
 
@@ -314,17 +323,8 @@ void MainWindow::DeclareKeys (void) {
   this->ExpectedBreakUnicode.clear();
   this->ExpectedMakeUnicode.clear();
 
-  /*
-   *
 
-
-
-
-
-
-   */
-
-  this->buttons.push_back(ui->pos122); this->position.push_back(122); this->ExpectedMakeUnicode.push_back("1999 0 129 183");this->ExpectedBreakUnicode.push_back("1000 128 129 183");
+    this->buttons.push_back(ui->pos122); this->position.push_back(122); this->ExpectedMakeUnicode.push_back("1999 0 129 183");this->ExpectedBreakUnicode.push_back("1000 128 129 183");
     this->buttons.push_back(ui->pos123); this->position.push_back(123);this->ExpectedMakeUnicode.push_back("1999 0 129 184");this->ExpectedBreakUnicode.push_back("1000 128 129 184");
     this->buttons.push_back(ui->pos124); this->position.push_back(124);this->ExpectedMakeUnicode.push_back("1999 0 129 185");this->ExpectedBreakUnicode.push_back("1000 128 129 185");
     this->buttons.push_back(ui->pos125); this->position.push_back(125);this->ExpectedMakeUnicode.push_back("1999 0 129 186");this->ExpectedBreakUnicode.push_back("1000 128 129 186");
@@ -711,4 +711,10 @@ void MainWindow::on_btnDebug_clicked()
     DebugWindow dw;
     dw.show();
     dw.exec();
+}
+
+void MainWindow::on_btnExit_clicked()
+{
+    this->close();
+    RealMainWindow *rm = new RealMainWindow; rm->show();
 }

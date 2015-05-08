@@ -14,6 +14,9 @@
 #include "sudodialog.h"
 #include "cls_unicode.h"
 
+#include "realmainwindow.h"
+#include "ui_realmainwindow.h"
+
 int main(int argc, char *argv[])
 {
 
@@ -29,13 +32,10 @@ int main(int argc, char *argv[])
    // engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     if ( geteuid() ) {SudoDialog *sw = new SudoDialog; sw->show();}
-    else {MainWindow *kt = new MainWindow; kt->show(); }
+    else {
+        RealMainWindow *rm = new RealMainWindow; rm->show();
 
-
-
-
-
-
+    }
 
     return app.exec();
 }

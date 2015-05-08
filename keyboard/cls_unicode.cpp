@@ -30,7 +30,22 @@ using namespace std;
 
 
 
-/*******************   GET SCANCODE NEW    ****************************/
+/*******************   GET SCANCODE NEW INTEGER    ****************************/
+
+void SigDetect(int sign);
+
+void SigDetect(int sign) {
+  //  QCoreApplication::processEvents();
+//  signal(SIGALRM, SigDetect); //Set alarm clock for 3 seconds.
+  //alarm(1);
+  printf("ALARM\n");
+ // printf("Sign: %i\n", sign);
+ // signal(SIGALRM, SIG_IGN);
+  close(7);
+  //cls_UniCode::clean_up(7);
+ return;
+}
+
 
 long long int
 cls_UniCode::GetUnicodeInt(void) {
@@ -52,6 +67,10 @@ cls_UniCode::GetUnicodeInt(void) {
     std::exit(1);
     }
 
+   // qDebug() << "Global fd: " << this->fd_current << "   old fd: " << fd;
+
+    this->isCheckingCodes = true;
+
 
     // THIS IS THE HOOK
     if (tcgetattr(fd, &old) == -1)
@@ -59,100 +78,57 @@ cls_UniCode::GetUnicodeInt(void) {
     if (tcgetattr(fd, &newkb) == -1)
          perror("tcgetattr");
 
+    QCoreApplication::processEvents();
 
 
-
-QCoreApplication::processEvents();
-
-
-newkb.c_lflag &= ~ (ICANON | ECHO | ISIG);
-newkb.c_iflag = 0;
+    newkb.c_lflag &= ~ (ICANON | ECHO | ISIG);
+    newkb.c_iflag = 0;
 
 
-newkb.c_cc[VMIN] = 1;
-newkb.c_cc[VTIME] = 1;	/* 0.1 sec intercharacter timeout */
+    newkb.c_cc[VMIN] = 1;
+    newkb.c_cc[VTIME] = 1;	/* 0.1 sec intercharacter timeout */
 
-if (tcsetattr(fd, TCSAFLUSH, &newkb) == -1)
-     perror("tcsetattr");
+    if (tcsetattr(fd, TCSAFLUSH, &newkb) == -1) {
+         perror("tcsetattr");
+    }
 
+    if (ioctl(fd, KDSKBMODE, show_keycodes ? K_MEDIUMRAW : K_RAW)) {
+        cout << "Fail?? " << endl;
+        perror("KDSKBMODE");
+        clean_up(fd);
+        close(fd);
+    }
 
-if (ioctl(fd, KDSKBMODE, show_keycodes ? K_MEDIUMRAW : K_RAW)) {
- cout << "Fail?? " << endl;
- perror("KDSKBMODE");
- clean_up(fd);
- close(fd);
+    usleep(10);
 
-}
+    int fullcode;
 
-usleep(10);
-
-int t;
-for (t=0; t<19; ++t) {
- buf[t] = 0;
-}
-
- int fullcode;
-
- n = read(fd, &buf, sizeof(buf));
- if (n == -1) { cout << "ERROR READING USAGE CODE"; clean_up(fd); return n; }
-
- clean_up(fd);
- close(fd);
- return buf[0];
-
-/*
-
- int y = buf[0];
- fullcode = y;
+    alarm(4);
+    // signal(SIGALRM, quit());
+    signal(SIGALRM, SigDetect);
 
 
-
-// CONVERTS LONG INTEGER INTO BYTES
- scancodes = 0;
- for (i=0;i<n; ++i) {
-   buf[i] = ((fullcode & (255 << (8*i))) >> (8*i) );
-   ++ scancodes;
- }
-
-
-newbuf.clear();
- if (buf[0] < 128) {
-    newbuf.push_back(1999);
- }
- else
- {
-    newbuf.push_back(1000);
- }
-
-
-     for (t=0;t<scancodes;++t) {
-         newbuf.push_back(buf[t]);
-//               if ( newbuf[0] == 1) {
-//                   clean_up(fd);
-//                   close(fd);
-//                   return newbuf;
-//               }
-//     buf[t] = 0;  //flush buffer
-     }
-
+    n = read(fd, &buf, sizeof(buf));
+    QCoreApplication::processEvents();
+    if (n == -1) {
+   //  cout << "ERROR READING USAGE CODE";
      clean_up(fd);
-     close(fd);
-     return newbuf;
-} // end try
-catch (SignalException& e)
-{
-std::cerr << "SignalException: " << e.what() << std::endl;
-// iret = EXIT_FAILURE;
-}
+     return n;
+    }
 
-return newbuf;
-*/
+    clean_up(fd);
+    close(fd);
+    return buf[0];
+
 }
+//////////////////// END GET INT BUFFER ////////////////////////////////////////////
+
 
 
 
 /*******************   GET BUFFWE    ****************************/
- std::vector<int> cls_UniCode::GetUnicodeBuffer (void) {
+ std::vector<int> cls_UniCode::
+ GetUnicodeBuffer (void) {
          int show_keycodes = 1;
     int fd;
   //  int iret;

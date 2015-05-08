@@ -13,7 +13,10 @@ SOURCES += main.cpp \
     sudodialog.cpp \
     dialogpass.cpp \
     dialogfail.cpp \
-    debugwindow.cpp
+    debugwindow.cpp \
+    adminwindow.cpp \
+    realmainwindow.cpp \
+    multipageform.cpp
 
 RESOURCES +=
 
@@ -34,7 +37,10 @@ HEADERS += \
     sudodialog.h \
     dialogpass.h \
     dialogfail.h \
-    debugwindow.h
+    debugwindow.h \
+    adminwindow.h \
+    realmainwindow.h \
+    multipageform.h
 
 FORMS += \
     mainwindow.ui \
@@ -42,7 +48,10 @@ FORMS += \
     GType.ui \
     dialogpass.ui \
     dialogfail.ui \
-    debugwindow.ui
+    debugwindow.ui \
+    adminwindow.ui \
+    realmainwindow.ui \
+    multipageform.ui
 
 OTHER_FILES += \
     test.wse \

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue May 5 08:59:19 2015
+** Created: Thu May 7 14:43:23 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -161,6 +161,7 @@ public:
     QComboBox *cmbPartNumber;
     QPushButton *btnNewTest;
     QPushButton *btnDebug;
+    QPushButton *btnExit;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -563,16 +564,16 @@ public:
         btnStop->setGeometry(QRect(10, 280, 83, 25));
         btnThreadTest = new QPushButton(centralwidget);
         btnThreadTest->setObjectName(QString::fromUtf8("btnThreadTest"));
-        btnThreadTest->setGeometry(QRect(560, 240, 83, 25));
+        btnThreadTest->setGeometry(QRect(560, 220, 83, 25));
         btnStopThreadTest = new QPushButton(centralwidget);
         btnStopThreadTest->setObjectName(QString::fromUtf8("btnStopThreadTest"));
-        btnStopThreadTest->setGeometry(QRect(560, 270, 83, 25));
+        btnStopThreadTest->setGeometry(QRect(560, 250, 83, 25));
         lblCurrentFirmware = new QLabel(centralwidget);
         lblCurrentFirmware->setObjectName(QString::fromUtf8("lblCurrentFirmware"));
         lblCurrentFirmware->setGeometry(QRect(10, 340, 209, 14));
         btnTestLoadedWSE = new QPushButton(centralwidget);
         btnTestLoadedWSE->setObjectName(QString::fromUtf8("btnTestLoadedWSE"));
-        btnTestLoadedWSE->setGeometry(QRect(532, 320, 111, 41));
+        btnTestLoadedWSE->setGeometry(QRect(540, 280, 111, 41));
         btnTestLoadedWSE->setDefault(false);
         btnTestLoadedWSE->setFlat(false);
         GetUnicodes = new QPushButton(centralwidget);
@@ -587,7 +588,10 @@ public:
         btnNewTest->setGeometry(QRect(420, 310, 83, 25));
         btnDebug = new QPushButton(centralwidget);
         btnDebug->setObjectName(QString::fromUtf8("btnDebug"));
-        btnDebug->setGeometry(QRect(420, 20, 83, 25));
+        btnDebug->setGeometry(QRect(420, 10, 83, 25));
+        btnExit = new QPushButton(centralwidget);
+        btnExit->setObjectName(QString::fromUtf8("btnExit"));
+        btnExit->setGeometry(QRect(582, 350, 61, 25));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -744,6 +748,7 @@ public:
         GetUnicodes->setText(QApplication::translate("MainWindow", "START TEST", 0, QApplication::UnicodeUTF8));
         btnNewTest->setText(QApplication::translate("MainWindow", "NEW TEST", 0, QApplication::UnicodeUTF8));
         btnDebug->setText(QApplication::translate("MainWindow", "DEBUG", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("MainWindow", "EXIT", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

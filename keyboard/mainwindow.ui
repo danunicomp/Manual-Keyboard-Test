@@ -1708,7 +1708,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>240</y>
+      <y>220</y>
       <width>83</width>
       <height>25</height>
      </rect>
@@ -1721,7 +1721,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>270</y>
+      <y>250</y>
       <width>83</width>
       <height>25</height>
      </rect>
@@ -1746,8 +1746,8 @@
    <widget class="QPushButton" name="btnTestLoadedWSE">
     <property name="geometry">
      <rect>
-      <x>532</x>
-      <y>320</y>
+      <x>540</x>
+      <y>280</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -1805,13 +1805,26 @@
     <property name="geometry">
      <rect>
       <x>420</x>
-      <y>20</y>
+      <y>10</y>
       <width>83</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
      <string>DEBUG</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnExit">
+    <property name="geometry">
+     <rect>
+      <x>582</x>
+      <y>350</y>
+      <width>61</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>EXIT</string>
     </property>
    </widget>
   </widget>

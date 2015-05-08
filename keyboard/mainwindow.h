@@ -35,6 +35,8 @@ private slots:
 
     void on_btnDebug_clicked();
 
+    void on_btnExit_clicked();
+
 private:
     Ui::MainWindow *ui;
 
