@@ -90,6 +90,7 @@ void MainWindow::on_btnNewTest_clicked()
      // READ WSE FILE
      for (x=0; x< KeyScanCodes.kbPositions.size(); ++x) {
          qDebug() << KeyScanCodes.kbPositions[x] << " Make: " << KeyScanCodes.kbMakes[x] << " Break: " << KeyScanCodes.kbBreaks[x];
+         NewPosition.push_back(KeyScanCodes.kbPositions[x]);
      }
 
      // MAKE ALL BUTTONS ON UI GRAY
@@ -314,6 +315,14 @@ void MainWindow::on_btnStop_clicked()
 this->stopcycle = true;
 }
 
+// *****  NEW DECLARE *********************************************************
+
+void MainWindow::NewDeclareKeys(void)  {
+    this->NewButtons.clear();
+    this->NewPosition.clear();
+    this->NewExpectedBreakUnicode.clear();
+    this->NewExpectedMakeUnicode.clear();
+}
 
 // *************************************************************************************
 void MainWindow::DeclareKeys (void) {

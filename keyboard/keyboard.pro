@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     debugwindow.cpp \
     adminwindow.cpp \
     realmainwindow.cpp \
-    multipageform.cpp
+    keyboardselect.cpp \
+    kb_quick122.cpp
 
 RESOURCES +=
 
@@ -40,7 +41,8 @@ HEADERS += \
     debugwindow.h \
     adminwindow.h \
     realmainwindow.h \
-    multipageform.h
+    keyboardselect.h \
+    kb_quick122.h
 
 FORMS += \
     mainwindow.ui \
@@ -51,7 +53,8 @@ FORMS += \
     debugwindow.ui \
     adminwindow.ui \
     realmainwindow.ui \
-    multipageform.ui
+    keyboardselect.ui \
+    kb_quick122.ui
 
 OTHER_FILES += \
     test.wse \

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'realmainwindow.ui'
 **
-** Created: Thu May 7 14:33:32 2015
+** Created: Mon May 11 09:57:16 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -35,6 +35,8 @@ public:
     QTreeWidget *treeWidget;
     QTableWidget *tableWidget;
     QPushButton *btnOpenWorkingTest;
+    QPushButton *btnDebug;
+    QPushButton *btn122QuickTest;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -98,6 +100,12 @@ public:
         btnOpenWorkingTest = new QPushButton(centralwidget);
         btnOpenWorkingTest->setObjectName(QString::fromUtf8("btnOpenWorkingTest"));
         btnOpenWorkingTest->setGeometry(QRect(30, 40, 131, 25));
+        btnDebug = new QPushButton(centralwidget);
+        btnDebug->setObjectName(QString::fromUtf8("btnDebug"));
+        btnDebug->setGeometry(QRect(250, 20, 83, 25));
+        btn122QuickTest = new QPushButton(centralwidget);
+        btn122QuickTest->setObjectName(QString::fromUtf8("btn122QuickTest"));
+        btn122QuickTest->setGeometry(QRect(480, 30, 83, 25));
         RealMainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(RealMainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -167,6 +175,8 @@ public:
         tableWidget->setSortingEnabled(__sortingEnabled1);
 
         btnOpenWorkingTest->setText(QApplication::translate("RealMainWindow", "Working Test 122", 0, QApplication::UnicodeUTF8));
+        btnDebug->setText(QApplication::translate("RealMainWindow", "DEBUG", 0, QApplication::UnicodeUTF8));
+        btn122QuickTest->setText(QApplication::translate("RealMainWindow", "122 QUICK", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -18,6 +18,10 @@ public:
 private slots:
     void on_btnOpenWorkingTest_clicked();
 
+    void on_btnDebug_clicked();
+
+    void on_btn122QuickTest_clicked();
+
 private:
     Ui::RealMainWindow *ui;
 };

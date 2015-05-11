@@ -202,6 +202,32 @@
      <string>Working Test 122</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnDebug">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>20</y>
+      <width>83</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DEBUG</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn122QuickTest">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>30</y>
+      <width>83</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>122 QUICK</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

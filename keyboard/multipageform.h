@@ -1,6 +1,7 @@
 #ifndef MULTIPAGEFORM_H
 #define MULTIPAGEFORM_H
 
+#include <QMainWindow>
 
 namespace Ui {
 class MultiPageForm;

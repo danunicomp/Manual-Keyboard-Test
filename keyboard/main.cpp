@@ -31,10 +31,10 @@ int main(int argc, char *argv[])
     //QQmlApplicationEngine engine;
    // engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
+    // *** CHECK IF IN SUDO
     if ( geteuid() ) {SudoDialog *sw = new SudoDialog; sw->show();}
     else {
         RealMainWindow *rm = new RealMainWindow; rm->show();
-
     }
 
     return app.exec();

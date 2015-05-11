@@ -51,8 +51,16 @@ private:
       QVector<std::string> ExpectedMakeUnicode;
       QVector<std::string> ExpectedBreakUnicode;
 
- std::string VectorToString(std::vector<int> CurVector);
- void ShowFailure(int, std::string, int);
+    std::string VectorToString(std::vector<int> CurVector);
+    void ShowFailure(int, std::string, int);
+
+    // New Style
+    QVector<QPushButton *> NewButtons;
+    QVector<std::string> NewExpectedMakeUnicode;
+    QVector<std::string> NewExpectedBreakUnicode;
+    QVector<int> NewPosition;
+
+    void NewDeclareKeys(void);
 
 };
 

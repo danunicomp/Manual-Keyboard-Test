@@ -18,8 +18,11 @@ public:
 private slots:
     void on_btnGetScancodes_clicked();
 
+    void on_btnDebugExit_clicked();
+
 private:
     Ui::DebugWindow *ui;
+    void DoTest2015 (void);
 };
 
 #endif // DEBUGWINDOW_H

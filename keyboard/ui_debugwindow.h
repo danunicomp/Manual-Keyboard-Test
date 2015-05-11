@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'debugwindow.ui'
 **
-** Created: Tue May 5 08:59:19 2015
+** Created: Mon May 11 09:41:58 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -26,8 +26,9 @@ class Ui_DebugWindow
 {
 public:
     QGroupBox *groupBox;
-    QTextBrowser *textBrowser;
+    QTextBrowser *txbOutput;
     QPushButton *btnGetScancodes;
+    QPushButton *btnDebugExit;
 
     void setupUi(QDialog *DebugWindow)
     {
@@ -39,13 +40,16 @@ public:
         DebugWindow->setModal(true);
         groupBox = new QGroupBox(DebugWindow);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(20, 60, 471, 221));
-        textBrowser = new QTextBrowser(groupBox);
-        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(40, 30, 381, 121));
+        groupBox->setGeometry(QRect(20, 60, 601, 401));
+        txbOutput = new QTextBrowser(groupBox);
+        txbOutput->setObjectName(QString::fromUtf8("txbOutput"));
+        txbOutput->setGeometry(QRect(30, 30, 261, 351));
         btnGetScancodes = new QPushButton(groupBox);
         btnGetScancodes->setObjectName(QString::fromUtf8("btnGetScancodes"));
-        btnGetScancodes->setGeometry(QRect(50, 170, 83, 25));
+        btnGetScancodes->setGeometry(QRect(320, 40, 83, 25));
+        btnDebugExit = new QPushButton(groupBox);
+        btnDebugExit->setObjectName(QString::fromUtf8("btnDebugExit"));
+        btnDebugExit->setGeometry(QRect(500, 360, 83, 25));
 
         retranslateUi(DebugWindow);
 
@@ -54,9 +58,10 @@ public:
 
     void retranslateUi(QDialog *DebugWindow)
     {
-        DebugWindow->setWindowTitle(QApplication::translate("DebugWindow", "Dialog", 0, QApplication::UnicodeUTF8));
+        DebugWindow->setWindowTitle(QApplication::translate("DebugWindow", "Debug Keyboard", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("DebugWindow", "GroupBox", 0, QApplication::UnicodeUTF8));
         btnGetScancodes->setText(QApplication::translate("DebugWindow", "Test Keys", 0, QApplication::UnicodeUTF8));
+        btnDebugExit->setText(QApplication::translate("DebugWindow", "Close", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'realmainwindow.h'
 **
-** Created: Thu May 7 14:37:25 2015
+** Created: Mon May 11 09:58:53 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_RealMainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,13 +32,16 @@ static const uint qt_meta_data_RealMainWindow[] = {
 
  // slots: signature, parameters, type, tag, flags
       15,   47,   47,   47, 0x08,
+      48,   47,   47,   47, 0x08,
+      70,   47,   47,   47, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_RealMainWindow[] = {
     "RealMainWindow\0on_btnOpenWorkingTest_clicked()\0"
-    "\0"
+    "\0on_btnDebug_clicked()\0"
+    "on_btn122QuickTest_clicked()\0"
 };
 
 void RealMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -48,6 +51,8 @@ void RealMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         RealMainWindow *_t = static_cast<RealMainWindow *>(_o);
         switch (_id) {
         case 0: _t->on_btnOpenWorkingTest_clicked(); break;
+        case 1: _t->on_btnDebug_clicked(); break;
+        case 2: _t->on_btn122QuickTest_clicked(); break;
         default: ;
         }
     }
@@ -86,9 +91,9 @@ int RealMainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 3;
     }
     return _id;
 }
