@@ -1,30 +1,34 @@
 /********************************************************************************
-** Form generated from reading UI file 'kb_quick122.ui'
+** Form generated from reading UI file 'kb_122_test.ui'
 **
-** Created: Mon May 11 10:26:01 2015
+** Created: Mon May 11 12:56:45 2015
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_KB_QUICK122_H
-#define UI_KB_QUICK122_H
+#ifndef UI_KB_122_TEST_H
+#define UI_KB_122_TEST_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
-#include <QtGui/QDialog>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHeaderView>
+#include <QtGui/QMainWindow>
+#include <QtGui/QMenuBar>
 #include <QtGui/QPushButton>
+#include <QtGui/QStatusBar>
 #include <QtGui/QTextBrowser>
+#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_kb_Quick122
+class Ui_kb_122_Test
 {
 public:
+    QWidget *centralwidget;
     QGroupBox *grpQuick;
     QPushButton *pos036;
     QPushButton *pos043;
@@ -148,20 +152,23 @@ public:
     QPushButton *pos097;
     QPushButton *pos129;
     QPushButton *pos082;
+    QPushButton *btnStartTest;
     QPushButton *btnClose;
     QTextBrowser *txbOutput;
     QPushButton *btnExit;
-    QPushButton *btnStartTest;
+    QMenuBar *menubar;
+    QStatusBar *statusbar;
 
-    void setupUi(QDialog *kb_Quick122)
+    void setupUi(QMainWindow *kb_122_Test)
     {
-        if (kb_Quick122->objectName().isEmpty())
-            kb_Quick122->setObjectName(QString::fromUtf8("kb_Quick122"));
-        kb_Quick122->setWindowModality(Qt::ApplicationModal);
-        kb_Quick122->resize(702, 431);
-        grpQuick = new QGroupBox(kb_Quick122);
+        if (kb_122_Test->objectName().isEmpty())
+            kb_122_Test->setObjectName(QString::fromUtf8("kb_122_Test"));
+        kb_122_Test->resize(722, 451);
+        centralwidget = new QWidget(kb_122_Test);
+        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        grpQuick = new QGroupBox(centralwidget);
         grpQuick->setObjectName(QString::fromUtf8("grpQuick"));
-        grpQuick->setGeometry(QRect(10, 20, 681, 231));
+        grpQuick->setGeometry(QRect(10, 10, 681, 231));
         pos036 = new QPushButton(grpQuick);
         pos036->setObjectName(QString::fromUtf8("pos036"));
         pos036->setGeometry(QRect(240, 140, 25, 25));
@@ -539,28 +546,36 @@ public:
         pos082 = new QPushButton(grpQuick);
         pos082->setObjectName(QString::fromUtf8("pos082"));
         pos082->setGeometry(QRect(496, 140, 25, 25));
-        btnClose = new QPushButton(kb_Quick122);
-        btnClose->setObjectName(QString::fromUtf8("btnClose"));
-        btnClose->setGeometry(QRect(380, 360, 83, 25));
-        txbOutput = new QTextBrowser(kb_Quick122);
-        txbOutput->setObjectName(QString::fromUtf8("txbOutput"));
-        txbOutput->setGeometry(QRect(10, 270, 351, 141));
-        btnExit = new QPushButton(kb_Quick122);
-        btnExit->setObjectName(QString::fromUtf8("btnExit"));
-        btnExit->setGeometry(QRect(380, 390, 83, 25));
-        btnStartTest = new QPushButton(kb_Quick122);
+        btnStartTest = new QPushButton(centralwidget);
         btnStartTest->setObjectName(QString::fromUtf8("btnStartTest"));
-        btnStartTest->setGeometry(QRect(380, 270, 83, 41));
+        btnStartTest->setGeometry(QRect(380, 260, 83, 41));
+        btnClose = new QPushButton(centralwidget);
+        btnClose->setObjectName(QString::fromUtf8("btnClose"));
+        btnClose->setGeometry(QRect(380, 350, 83, 25));
+        txbOutput = new QTextBrowser(centralwidget);
+        txbOutput->setObjectName(QString::fromUtf8("txbOutput"));
+        txbOutput->setGeometry(QRect(10, 260, 351, 141));
+        btnExit = new QPushButton(centralwidget);
+        btnExit->setObjectName(QString::fromUtf8("btnExit"));
+        btnExit->setGeometry(QRect(380, 380, 83, 25));
+        kb_122_Test->setCentralWidget(centralwidget);
+        menubar = new QMenuBar(kb_122_Test);
+        menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setGeometry(QRect(0, 0, 722, 22));
+        kb_122_Test->setMenuBar(menubar);
+        statusbar = new QStatusBar(kb_122_Test);
+        statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        kb_122_Test->setStatusBar(statusbar);
 
-        retranslateUi(kb_Quick122);
+        retranslateUi(kb_122_Test);
 
-        QMetaObject::connectSlotsByName(kb_Quick122);
+        QMetaObject::connectSlotsByName(kb_122_Test);
     } // setupUi
 
-    void retranslateUi(QDialog *kb_Quick122)
+    void retranslateUi(QMainWindow *kb_122_Test)
     {
-        kb_Quick122->setWindowTitle(QApplication::translate("kb_Quick122", "Unicomp - Quick 122 Test", 0, QApplication::UnicodeUTF8));
-        grpQuick->setTitle(QApplication::translate("kb_Quick122", "122 Quick Test", 0, QApplication::UnicodeUTF8));
+        kb_122_Test->setWindowTitle(QApplication::translate("kb_122_Test", "MainWindow", 0, QApplication::UnicodeUTF8));
+        grpQuick->setTitle(QApplication::translate("kb_122_Test", "122 Quick Test", 0, QApplication::UnicodeUTF8));
         pos036->setText(QString());
         pos043->setText(QString());
         pos085->setText(QString());
@@ -578,7 +593,7 @@ public:
         pos112->setText(QString());
         pos065->setText(QString());
 #ifndef QT_NO_WHATSTHIS
-        pos045->setWhatsThis(QApplication::translate("kb_Quick122", "<html><head/><body><p>F13</p></body></html>", 0, QApplication::UnicodeUTF8));
+        pos045->setWhatsThis(QApplication::translate("kb_122_Test", "<html><head/><body><p>F13</p></body></html>", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_WHATSTHIS
         pos045->setText(QString());
         pos118->setText(QString());
@@ -616,7 +631,7 @@ public:
         pos111->setText(QString());
         pos033->setText(QString());
 #ifndef QT_NO_WHATSTHIS
-        pos017->setWhatsThis(QApplication::translate("kb_Quick122", "<html><head/><body><p>F13</p></body></html>", 0, QApplication::UnicodeUTF8));
+        pos017->setWhatsThis(QApplication::translate("kb_122_Test", "<html><head/><body><p>F13</p></body></html>", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_WHATSTHIS
         pos017->setText(QString());
         pos113->setText(QString());
@@ -649,11 +664,11 @@ public:
         pos011->setText(QString());
         pos125->setText(QString());
 #ifndef QT_NO_WHATSTHIS
-        pos031->setWhatsThis(QApplication::translate("kb_Quick122", "<html><head/><body><p>F13</p></body></html>", 0, QApplication::UnicodeUTF8));
+        pos031->setWhatsThis(QApplication::translate("kb_122_Test", "<html><head/><body><p>F13</p></body></html>", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_WHATSTHIS
         pos031->setText(QString());
 #ifndef QT_NO_STATUSTIP
-        pos122->setStatusTip(QApplication::translate("kb_Quick122", "F13", 0, QApplication::UnicodeUTF8));
+        pos122->setStatusTip(QApplication::translate("kb_122_Test", "F13", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_STATUSTIP
 #ifndef QT_NO_WHATSTHIS
         pos122->setWhatsThis(QString());
@@ -698,17 +713,17 @@ public:
         pos097->setText(QString());
         pos129->setText(QString());
         pos082->setText(QString());
-        btnClose->setText(QApplication::translate("kb_Quick122", "Close", 0, QApplication::UnicodeUTF8));
-        btnExit->setText(QApplication::translate("kb_Quick122", "Exit", 0, QApplication::UnicodeUTF8));
-        btnStartTest->setText(QApplication::translate("kb_Quick122", "Start Test", 0, QApplication::UnicodeUTF8));
+        btnStartTest->setText(QApplication::translate("kb_122_Test", "Start Test", 0, QApplication::UnicodeUTF8));
+        btnClose->setText(QApplication::translate("kb_122_Test", "Close", 0, QApplication::UnicodeUTF8));
+        btnExit->setText(QApplication::translate("kb_122_Test", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class kb_Quick122: public Ui_kb_Quick122 {};
+    class kb_122_Test: public Ui_kb_122_Test {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_KB_QUICK122_H
+#endif // UI_KB_122_TEST_H

@@ -10,6 +10,9 @@
 #include "kb_quick122.h"
 #include "ui_kb_quick122.h"
 
+#include "kb_122_test.h"
+#include "ui_kb_122_test.h"
+
 RealMainWindow::RealMainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::RealMainWindow)
@@ -43,8 +46,10 @@ void RealMainWindow::on_btnDebug_clicked()
 
 void RealMainWindow::on_btn122QuickTest_clicked()
 {
-    kb_Quick122 qt;
-    qt.show();
-    qt.exec();
+
+    this->close();
+     kb_122_Test *kt = new kb_122_Test;
+     kt->show();
+
     // kb_Quick122.show();
 }

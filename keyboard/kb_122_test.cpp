@@ -1,30 +1,42 @@
-#include <QtCore>
-#include "kb_quick122.h"
-#include "ui_kb_quick122.h"
+
+#include <QVector>
+#include <QMainWindow>
+#include <QApplication>
+#include <QtGui/QPushButton>
+#include <QObject>
+#include <QWidget>
+#include <QDebug>
+#include <QThread>
+#include <QFile>
+
+#include "kb_122_test.h"
+#include "ui_kb_122_test.h"
 
 #include "cls_readwsefile.h"
 #include "cls_unicode.h"
 
 
-kb_Quick122::kb_Quick122(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::kb_Quick122)
+
+kb_122_Test::kb_122_Test(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::kb_122_Test)
 {
     ui->setupUi(this);
 }
 
-kb_Quick122::~kb_Quick122()
+kb_122_Test::~kb_122_Test()
 {
     delete ui;
 }
 
-void kb_Quick122::on_btnClose_clicked()
+
+void kb_122_Test::on_btnClose_clicked()
 {
     this->close();
 }
 
 ////////////////////////////////////////////////////////////////////
- void kb_Quick122::DoTest2015 (void) {
+ void kb_122_Test::DoTest2015 (void) {
  //    bool resultkey=false;
      QVector<int> buffer;
 
@@ -54,21 +66,38 @@ void kb_Quick122::on_btnClose_clicked()
 
      cls_UniCode kbtest;
 
+     for(x=0; x<buttons.size(); ++x) {
+     //    buttons[x]->
+     }
+
+     x=0;
      while(code != -1) {
+         buttons[x/2]->setPalette(QPalette(QColor(Qt::blue)));
+         buttons[x/2]->repaint();
          code = kbtest.GetUnicodeInt();
          s = QString::number(code);
          hexadecimal.setNum(code,16);
          ui->txbOutput->append(hexadecimal);
+         buttons[x/2]->setPalette(QPalette(QColor(Qt::green)));
+         buttons[x/2]->repaint();
+         ++x;
+         if (x > buttons.size()) {
+             for (x=0; x<buttons.size(); ++x) {    // make all keys gray
+                buttons[x]->setPalette(QPalette(QColor(Qt::darkGray)));
+              }
+             x = 0;
+         }
+
     }
 
  }
 
-void kb_Quick122::on_btnStartTest_clicked()
+void kb_122_Test::on_btnStartTest_clicked()
 {
     DoTest2015();
 }
 
-void kb_Quick122::DefineKeyboard(void) {
+void kb_122_Test::DefineKeyboard(void) {
 
     buttons.clear();
 

@@ -1,15 +1,15 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'kb_quick122.h'
+** Meta object code from reading C++ file 'kb_122_test.h'
 **
-** Created: Mon May 11 10:38:27 2015
+** Created: Mon May 11 13:06:35 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "kb_quick122.h"
+#include "kb_122_test.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'kb_quick122.h' doesn't include <QObject>."
+#error "The header file 'kb_122_test.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
 #error "This file was generated using the moc from 4.8.2. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -17,7 +17,7 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_kb_Quick122[] = {
+static const uint qt_meta_data_kb_122_Test[] = {
 
  // content:
        6,       // revision
@@ -37,16 +37,16 @@ static const uint qt_meta_data_kb_Quick122[] = {
        0        // eod
 };
 
-static const char qt_meta_stringdata_kb_Quick122[] = {
-    "kb_Quick122\0on_btnClose_clicked()\0\0"
+static const char qt_meta_stringdata_kb_122_Test[] = {
+    "kb_122_Test\0on_btnClose_clicked()\0\0"
     "on_btnStartTest_clicked()\0"
 };
 
-void kb_Quick122::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void kb_122_Test::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Q_ASSERT(staticMetaObject.cast(_o));
-        kb_Quick122 *_t = static_cast<kb_Quick122 *>(_o);
+        kb_122_Test *_t = static_cast<kb_122_Test *>(_o);
         switch (_id) {
         case 0: _t->on_btnClose_clicked(); break;
         case 1: _t->on_btnStartTest_clicked(); break;
@@ -56,35 +56,35 @@ void kb_Quick122::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     Q_UNUSED(_a);
 }
 
-const QMetaObjectExtraData kb_Quick122::staticMetaObjectExtraData = {
+const QMetaObjectExtraData kb_122_Test::staticMetaObjectExtraData = {
     0,  qt_static_metacall 
 };
 
-const QMetaObject kb_Quick122::staticMetaObject = {
-    { &QDialog::staticMetaObject, qt_meta_stringdata_kb_Quick122,
-      qt_meta_data_kb_Quick122, &staticMetaObjectExtraData }
+const QMetaObject kb_122_Test::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_kb_122_Test,
+      qt_meta_data_kb_122_Test, &staticMetaObjectExtraData }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
-const QMetaObject &kb_Quick122::getStaticMetaObject() { return staticMetaObject; }
+const QMetaObject &kb_122_Test::getStaticMetaObject() { return staticMetaObject; }
 #endif //Q_NO_DATA_RELOCATION
 
-const QMetaObject *kb_Quick122::metaObject() const
+const QMetaObject *kb_122_Test::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
 }
 
-void *kb_Quick122::qt_metacast(const char *_clname)
+void *kb_122_Test::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_kb_Quick122))
-        return static_cast<void*>(const_cast< kb_Quick122*>(this));
-    return QDialog::qt_metacast(_clname);
+    if (!strcmp(_clname, qt_meta_stringdata_kb_122_Test))
+        return static_cast<void*>(const_cast< kb_122_Test*>(this));
+    return QMainWindow::qt_metacast(_clname);
 }
 
-int kb_Quick122::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int kb_122_Test::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QDialog::qt_metacall(_c, _id, _a);
+    _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

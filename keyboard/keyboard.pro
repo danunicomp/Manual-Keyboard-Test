@@ -17,7 +17,7 @@ SOURCES += main.cpp \
     adminwindow.cpp \
     realmainwindow.cpp \
     keyboardselect.cpp \
-    kb_quick122.cpp
+    kb_122_test.cpp
 
 RESOURCES +=
 
@@ -42,7 +42,7 @@ HEADERS += \
     adminwindow.h \
     realmainwindow.h \
     keyboardselect.h \
-    kb_quick122.h
+    kb_122_test.h
 
 FORMS += \
     mainwindow.ui \
@@ -54,7 +54,7 @@ FORMS += \
     adminwindow.ui \
     realmainwindow.ui \
     keyboardselect.ui \
-    kb_quick122.ui
+    kb_122_test.ui
 
 OTHER_FILES += \
     test.wse \
