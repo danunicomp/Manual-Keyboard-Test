@@ -9,6 +9,8 @@
 #include <QThread>
 #include <QFile>
 
+#include <QDesktopWidget>
+
 #include "kb_122_test.h"
 #include "ui_kb_122_test.h"
 
@@ -22,6 +24,11 @@ kb_122_Test::kb_122_Test(QWidget *parent) :
     ui(new Ui::kb_122_Test)
 {
     ui->setupUi(this);
+
+    //Put the dialog in the screen center
+     const QRect screen = QApplication::desktop()->screenGeometry();
+     this->move( screen.center() - this->rect().center() );
+
 }
 
 kb_122_Test::~kb_122_Test()
@@ -60,7 +67,7 @@ void kb_122_Test::on_btnClose_clicked()
 
      // MAKE ALL BUTTONS ON UI GRAY
      for (x=0; x<buttons.size(); ++x) {    // make all keys gray
-        buttons[x]->setPalette(QPalette(QColor(Qt::darkGray)));
+        buttons[x]->setPalette(QPalette(QColor(Qt::lightGray)));
       }
      QWidget::repaint();
 
