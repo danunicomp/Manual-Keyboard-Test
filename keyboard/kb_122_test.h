@@ -27,6 +27,11 @@ private:
     void DoTest2015 (void);
     void DefineKeyboard(void);
     QVector<QPushButton *> buttons;
+    QVector<QString> Makes;
+    QVector<QString> Breaks;
+
+   QString ConvIntToHexString (int);
+
 };
 
 #endif // kb_122_Test_H

@@ -12,8 +12,9 @@ class cls_UniCode : public QObject
 
 public:
     explicit cls_UniCode(QObject *parent = 0);
-       std::vector<int> GetUnicodeBuffer (void);
-       long long int GetUnicodeInt(void);
+    std::vector<int> GetUnicodeBuffer (void);
+    long long int GetUnicodeInt(void);
+    QVector<QString> GetNewUnicodeBuffer (void);
 
 public slots:
 
@@ -31,7 +32,7 @@ private:
     bool isCheckingCodes;
 
 signals:
-  void QuitScan();
+    void QuitScan();
 
 };
 

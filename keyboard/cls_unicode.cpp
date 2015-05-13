@@ -30,7 +30,7 @@ using namespace std;
 
 
 
-/*******************   GET SCANCODE NEW INTEGER    ****************************/
+/*******************   NEW GET SCANCODE NEW STRING    ****************************/
 
 void SigDetect(int sign);
 
@@ -38,39 +38,34 @@ void SigDetect(int sign) {
   //  QCoreApplication::processEvents();
 //  signal(SIGALRM, SigDetect); //Set alarm clock for 3 seconds.
   //alarm(1);
-  printf("ALARM\n");
- // printf("Sign: %i\n", sign);
+ // printf("ALARM\n");
+//  printf("Sign: %i\n", sign);
  // signal(SIGALRM, SIG_IGN);
   close(7);
   //cls_UniCode::clean_up(7);
  return;
 }
-
-
-long long int
-cls_UniCode::GetUnicodeInt(void) {
-
+/////////////////////////////////////
+QVector<QString>
+cls_UniCode::GetNewUnicodeBuffer (void) {
     int show_keycodes = 1;
     int fd;
     //  int iret;
 
     //  cout << cls_UniCode::QObject.objectName();
 
-    long long int  buf[19];
+   int  buf[19];
     int scancodes;
-    std::vector<int> newbuf;
+    QVector<QString> newbuf;
     int i, n;
 
     fd = cls_UniCode::getfd(NULL);
     if (fd == -1) {
     //  perror("Not in sudo??");
-    std::exit(1);
+        std::exit(1);
     }
 
-   // qDebug() << "Global fd: " << this->fd_current << "   old fd: " << fd;
-
     this->isCheckingCodes = true;
-
 
     // THIS IS THE HOOK
     if (tcgetattr(fd, &old) == -1)
@@ -80,10 +75,8 @@ cls_UniCode::GetUnicodeInt(void) {
 
     QCoreApplication::processEvents();
 
-
     newkb.c_lflag &= ~ (ICANON | ECHO | ISIG);
     newkb.c_iflag = 0;
-
 
     newkb.c_cc[VMIN] = 1;
     newkb.c_cc[VTIME] = 1;	/* 0.1 sec intercharacter timeout */
@@ -104,9 +97,110 @@ cls_UniCode::GetUnicodeInt(void) {
     int fullcode;
 
     alarm(4);
-    // signal(SIGALRM, quit());
     signal(SIGALRM, SigDetect);
 
+    n = read(fd, &buf, sizeof(buf));
+    QCoreApplication::processEvents();
+    if (n == -1) {
+   //  cout << "ERROR READING USAGE CODE";
+        clean_up(fd);
+        return newbuf;
+    }
+
+// ------------------  DECODE  ----
+    fullcode = buf[0];
+
+// CONVERTS LONG INTEGER INTO BYTES
+    // n is the number of scan codes
+
+    if (fullcode > 0 ) {
+        scancodes = 0;
+        for (i=0;i<n; ++i) {
+          buf[i] = ((fullcode & (255 << (8*i))) >> (8*i) );
+          ++ scancodes;
+        }
+
+        QString s = ""; int tmp;
+        if (n > 1) {
+            for (tmp = 0; tmp < n-1; ++tmp) {
+               // cout << "POS: " << tmp << " " << buf[tmp] << endl;
+                s = s + QString::number(buf[tmp]) + " ";
+            }
+            s = s + QString::number(buf[tmp]);
+        }
+        else {
+            s = QString::number(buf[0]);
+        }
+        if (buf[0] < 128) newbuf.push_back("1000");
+        else newbuf.push_back("9999");
+
+        newbuf.push_back(s);
+    }
+
+// ---------------------------------
+    clean_up(fd);
+    close(fd);
+    return newbuf;
+}
+
+
+////////////////////  GET INT  SCANCODE  ////////////////////////////////////////////
+long long int
+cls_UniCode::GetUnicodeInt(void) {
+
+    int show_keycodes = 1;
+    int fd;
+    //  int iret;
+
+    //  cout << cls_UniCode::QObject.objectName();
+
+    long long int  buf[19];
+    //int scancodes;
+    std::vector<int> newbuf;
+    int  n;
+
+    fd = cls_UniCode::getfd(NULL);
+    if (fd == -1) {
+    //  perror("Not in sudo??");
+        std::exit(1);
+    }
+
+   // qDebug() << "Global fd: " << this->fd_current << "   old fd: " << fd;
+
+    this->isCheckingCodes = true;
+
+    // THIS IS THE HOOK
+    if (tcgetattr(fd, &old) == -1)
+         perror("tcgetattr");
+    if (tcgetattr(fd, &newkb) == -1)
+         perror("tcgetattr");
+
+    QCoreApplication::processEvents();
+
+    newkb.c_lflag &= ~ (ICANON | ECHO | ISIG);
+    newkb.c_iflag = 0;
+
+    newkb.c_cc[VMIN] = 1;
+    newkb.c_cc[VTIME] = 1;	/* 0.1 sec intercharacter timeout */
+
+    if (tcsetattr(fd, TCSAFLUSH, &newkb) == -1) {
+         perror("tcsetattr");
+    }
+
+    if (ioctl(fd, KDSKBMODE, show_keycodes ? K_MEDIUMRAW : K_RAW)) {
+        cout << "Fail?? " << endl;
+        perror("KDSKBMODE");
+        clean_up(fd);
+        close(fd);
+    }
+
+    usleep(10);
+
+    //int fullcode;
+
+    alarm(4);
+    // signal(SIGALRM, quit());
+    signal(SIGALRM, SigDetect);
 
     n = read(fd, &buf, sizeof(buf));
     QCoreApplication::processEvents();
@@ -126,10 +220,10 @@ cls_UniCode::GetUnicodeInt(void) {
 
 
 
-/*******************   GET BUFFWE    ****************************/
+/*******************   GET BUFFER    ****************************/
  std::vector<int> cls_UniCode::
  GetUnicodeBuffer (void) {
-         int show_keycodes = 1;
+    int show_keycodes = 1;
     int fd;
   //  int iret;
 
@@ -223,23 +317,26 @@ QCoreApplication::processEvents();
     for (t=0; t<19; ++t) {
         buf[t] = 0;
     }
-
+    alarm(4);
+    // signal(SIGALRM, quit());
+    signal(SIGALRM, SigDetect);
         int fullcode;
-QCoreApplication::processEvents();
+        QCoreApplication::processEvents();
          n = read(fd, buf, sizeof(buf));
-QCoreApplication::processEvents();
+        QCoreApplication::processEvents();
         if (n == -1) { cout << "ERROR"; clean_up(fd); return newbuf; }
         i = 0;
         int y = buf[0];
         fullcode = y;
 
 // CONVERTS LONG INTEGER INTO BYTES
+        // n is the number of scan codes
+
         scancodes = 0;
         for (i=0;i<n; ++i) {
           buf[i] = ((fullcode & (255 << (8*i))) >> (8*i) );
           ++ scancodes;
         }
-
 
     newbuf.clear();
         if (buf[0] < 128) {

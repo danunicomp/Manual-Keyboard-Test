@@ -55,7 +55,6 @@ ui->setupUi(this);
   //  buttons.push_back(ui->pos122);
 // LOAD PART NUMBERS
 
-
 }
 
 MainWindow::~MainWindow()
@@ -125,7 +124,7 @@ void MainWindow::on_btnNewTest_clicked()
 //////////////////////////////
 
   for (x=0; x<buttons.size(); ++x) {    // make all keys gray
-     buttons[x]->setPalette(QPalette(QColor(Qt::darkGray)));
+     buttons[x]->setPalette(QPalette(QColor(Qt::lightGray)));
    }
   QWidget::repaint();
 

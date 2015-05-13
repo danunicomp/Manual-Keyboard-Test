@@ -7,9 +7,6 @@
 #include "ui_mainwindow.h"
 #include "debugwindow.h"
 
-#include "kb_quick122.h"
-#include "ui_kb_quick122.h"
-
 #include "kb_122_test.h"
 #include "ui_kb_122_test.h"
 

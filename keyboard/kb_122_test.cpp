@@ -9,6 +9,8 @@
 #include <QThread>
 #include <QFile>
 
+#include <iostream>
+
 #include <QDesktopWidget>
 
 #include "kb_122_test.h"
@@ -44,24 +46,27 @@ void kb_122_Test::on_btnClose_clicked()
 
 ////////////////////////////////////////////////////////////////////
  void kb_122_Test::DoTest2015 (void) {
- //    bool resultkey=false;
-     QVector<int> buffer;
+//  bool resultkey=false;
+    QVector<QString> buffer;
 
-     std::string ExpectedUni; std::string ReadUni;
-     std::string MakeString, BreakString;
+    std::string ExpectedUni; std::string ReadUni;
+    std::string MakeString, BreakString;
     QString hexadecimal;    QString s;
 
      clsReadWSEFile KeyScanCodes;
-     int code;
+     //int code;
 
      KeyScanCodes.ReadWSEFile("/home/pi/unicomp/keyboard/_testkeyboard.wse");
 
      DefineKeyboard();
 
      int signed x;
+     int unsigned y;
      // READ WSE FILE
-     for (x=0; x< KeyScanCodes.kbPositions.size(); ++x) {
-         qDebug() << KeyScanCodes.kbPositions[x] << " Make: " << KeyScanCodes.kbMakes[x] << " Break: " << KeyScanCodes.kbBreaks[x];
+     for (y=0; y< KeyScanCodes.kbPositions.size(); ++y) {
+        Makes.push_back(KeyScanCodes.kbMakes[y]);
+        Breaks.push_back(KeyScanCodes.kbBreaks[y]);
+//        qDebug() << KeyScanCodes.kbPositions[y] << " Make: " << Makes[y] << " Break: " << Breaks[y];
        //  NewPosition.push_back(KeyScanCodes.kbPositions[x]);
      }
 
@@ -73,37 +78,59 @@ void kb_122_Test::on_btnClose_clicked()
 
      cls_UniCode kbtest;
 
-     for(x=0; x<buttons.size(); ++x) {
-     //    buttons[x]->
-     }
+    while (1) {
+        buffer = kbtest.GetNewUnicodeBuffer();
+  //      qDebug() << buffer[0] << " " << buffer[1] << endl;
 
+        if (buffer.size() > 0) {
+        ui->txbOutput->append(buffer[0]);
+        }
+        else break;
+
+    }
+
+
+/*
      x=0;
      while(code != -1) {
          buttons[x/2]->setPalette(QPalette(QColor(Qt::blue)));
          buttons[x/2]->repaint();
          code = kbtest.GetUnicodeInt();
+
          s = QString::number(code);
          hexadecimal.setNum(code,16);
          ui->txbOutput->append(hexadecimal);
          buttons[x/2]->setPalette(QPalette(QColor(Qt::green)));
          buttons[x/2]->repaint();
          ++x;
-         if (x > buttons.size()) {
+         if (x/2 > buttons.size()) {
              for (x=0; x<buttons.size(); ++x) {    // make all keys gray
-                buttons[x]->setPalette(QPalette(QColor(Qt::darkGray)));
+                buttons[x]->setPalette(QPalette(QColor(Qt::lightGray)));
               }
-             x = 0;
+            x = 0;
          }
-
-    }
-
- }
+     }
+*/
+}
 
 void kb_122_Test::on_btnStartTest_clicked()
 {
     DoTest2015();
 }
 
+/*
+QString kb_122_Test::ConvIntToHexString (int LongCode) {
+    int i; long long int y;  scancodes = 0;
+    for (i=1; i<=8; ++i) {
+
+    }
+
+    for (i=0;i<n; ++i) {
+        buf[i] = ((LongCode & (255 << (8*i))) >> (8*i) );
+        ++ scancodes;
+    }
+}
+*/
 void kb_122_Test::DefineKeyboard(void) {
 
     buttons.clear();

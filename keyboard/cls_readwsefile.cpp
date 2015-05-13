@@ -40,9 +40,6 @@ int clsReadWSEFile::ReadWSEFile (QString FileName)
       }
   }
 
-//  for(x=0; x<kbPositions.size(); ++x) {
-//      qDebug() << kbPositions[x];
-//  }
   return 1;
 }
 
